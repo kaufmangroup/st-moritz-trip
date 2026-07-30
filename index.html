@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="assets/js/dc-runtime.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&family=Rubik:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>/* hebrew */
+/* math */
+/* symbols */
+/* latin-ext */
+/* latin */
+/* hebrew */
+/* math */
+/* symbols */
+/* latin-ext */
+/* latin */
+/* hebrew */
+/* math */
+/* symbols */
+/* latin-ext */
+/* latin */
+/* hebrew */
+/* math */
+/* symbols */
+/* latin-ext */
+/* latin */
+/* hebrew */
+/* math */
+/* symbols */
+/* latin-ext */
+/* latin */
+/* hebrew */
+/* math */
+/* symbols */
+/* latin-ext */
+/* latin */
+/* arabic */
+/* cyrillic-ext */
+/* cyrillic */
+/* hebrew */
+/* latin-ext */
+/* latin */
+/* arabic */
+/* cyrillic-ext */
+/* cyrillic */
+/* hebrew */
+/* latin-ext */
+/* latin */
+/* arabic */
+/* cyrillic-ext */
+/* cyrillic */
+/* hebrew */
+/* latin-ext */
+/* latin */
+/* arabic */
+/* cyrillic-ext */
+/* cyrillic */
+/* hebrew */
+/* latin-ext */
+/* latin */
+/* arabic */
+/* cyrillic-ext */
+/* cyrillic */
+/* hebrew */
+/* latin-ext */
+/* latin */
+</style>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; -webkit-font-smoothing: antialiased; }
+    @media print {
+      .no-print { display: none !important; }
+      .day-panel { display: block !important; page-break-inside: avoid; }
+      .day-panel + .day-panel { margin-top: 36px; }
+    }
+  </style>
+</helmet>
+
+<div dir="rtl" lang="he" style="min-height:100vh; background:#faf6ef; color:#2b2620; font-family:'Heebo',sans-serif; line-height:1.5;">
+
+  <!-- HERO -->
+  <header style="position:relative; padding:72px 32px 48px; color:#f6f1e6; overflow:hidden;">
+    <div style="{{ heroBgStyle }}"></div>
+    <div style="max-width:1080px; margin:0 auto; position:relative;">
+      <div style="font-size:15px; letter-spacing:0.08em; opacity:0.9; margin-bottom:14px;">✈️ טיול משפחתי · שווייץ</div>
+      <h1 style="font-family:'Rubik',sans-serif; font-weight:500; font-size:clamp(15px,4.2vw,46px); margin:0 0 14px; max-width:1000px; white-space:nowrap; text-shadow:0 2px 18px rgba(0,0,0,0.25);">שישה ימים בין אגמים, פסגות ורכבות אלפיניות</h1>
+      <p style="font-size:19px; opacity:0.9; margin:0 0 28px; max-width:640px;">4–9 באוגוסט 2026 · תל אביב ← ציריך ← סנט מוריץ ← מילאנו ← תל אביב</p>
+
+      <div style="display:flex; flex-wrap:wrap; gap:12px; align-items:stretch;">
+        <div dir="ltr" style="flex:1 1 260px; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.25); border-radius:16px; padding:18px 20px; display:flex; gap:10px; align-items:center; justify-content:center;">
+          <sc-for list="{{ countdownParts }}" as="part" hint-placeholder-count="4">
+            <div style="text-align:center; min-width:44px; flex:1;">
+              <div style="font-family:'Rubik',sans-serif; font-weight:600; font-size:30px;">{{ part.value }}</div>
+              <div style="font-size:12px; opacity:0.75; margin-top:2px;">{{ part.label }}</div>
+            </div>
+          </sc-for>
+          <div style="align-self:center; font-size:13px; opacity:0.8; border-right:1px solid rgba(255,255,255,0.25); padding-right:16px; margin-right:2px;">עד ההמראה מת"א</div>
+        </div>
+
+        <div style="flex:1 1 320px; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.25); border-radius:16px; padding:16px 20px; font-size:13.5px; display:flex; gap:20px;">
+          <div style="flex:1; display:flex; flex-direction:column; gap:5px;">
+            <div style="font-size:12px; opacity:0.75; font-weight:600; margin-bottom:2px;">🛫 הלוך · תל אביב → ציריך</div>
+            <div style="display:flex; justify-content:space-between; gap:10px;"><span style="opacity:0.75;">שעת המראה:</span><span style="font-weight:600;">08:00</span></div>
+            <div style="display:flex; justify-content:space-between; gap:10px;"><span style="opacity:0.75;">שעת נחיתה:</span><span style="font-weight:600;">11:20</span></div>
+            <div style="display:flex; justify-content:space-between; gap:10px;"><span style="opacity:0.75;">מספר טיסה:</span><span style="font-weight:600;">LY347</span></div>
+          </div>
+          <div style="width:1px; background:rgba(255,255,255,0.25);"></div>
+          <div style="flex:1; display:flex; flex-direction:column; gap:5px;">
+            <div style="font-size:12px; opacity:0.75; font-weight:600; margin-bottom:2px;">🛬 חזור · מילאנו → תל אביב</div>
+            <div style="display:flex; justify-content:space-between; gap:10px;"><span style="opacity:0.75;">שעת המראה:</span><span style="font-weight:600;">22:55</span></div>
+            <div style="display:flex; justify-content:space-between; gap:10px;"><span style="opacity:0.75;">שעת נחיתה:</span><span style="font-weight:600;">03:40</span></div>
+            <div style="display:flex; justify-content:space-between; gap:10px;"><span style="opacity:0.75;">מספר טיסה:</span><span style="font-weight:600;">LY388</span></div>
+          </div>
+        </div>
+
+        <button class="no-print" onclick="{{ printPage }}" style="flex:1 1 180px; background:#f6f1e6; color:#1f3d33; border:none; border-radius:16px; padding:16px 16px; font-size:15px; font-weight:600; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px; white-space:nowrap;">🖨️ הדפסה / PDF</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- DAY TABS -->
+  <nav class="no-print" style="position:sticky; top:0; z-index:20; background:#faf6ef; border-bottom:1px solid #e6ddc9; padding:14px 24px; margin-top:32px;">
+    <div style="max-width:1080px; margin:0 auto; display:flex; gap:10px; overflow-x:auto;">
+      <sc-for list="{{ days }}" as="d" hint-placeholder-count="6">
+        <button onclick="{{ d.select }}" style="{{ d.tabStyle }}">
+          <span>{{ d.icon }}</span>
+          <span style="display:block; font-size:11px; opacity:0.75;">{{ d.dateShort }}</span>
+          <span style="display:block; font-weight:600;">{{ d.shortTitle }}</span>
+        </button>
+      </sc-for>
+    </div>
+  </nav>
+
+  <!-- DAY PANELS -->
+  <main style="max-width:1080px; margin:0 auto; padding:36px 24px 80px;">
+    <sc-for list="{{ days }}" as="d" hint-placeholder-count="6">
+      <sc-if value="{{ d.isActive }}" hint-placeholder-val="{{ true }}">
+        <section class="day-panel" style="animation:none;">
+          <div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:16px; margin-bottom:6px;">
+            <div style="display:flex; flex-wrap:wrap; align-items:baseline; gap:14px;">
+              <span style="font-size:34px;">{{ d.icon }}</span>
+              <h2 style="font-family:'Rubik',sans-serif; font-weight:500; font-size:30px; margin:0; color:#1f3d33;">{{ d.weekday }} {{ d.dateShort }} · {{ d.title }}</h2>
+            </div>
+            <div style="background:#fffdf8; border:1px solid #eee3cd; border-radius:16px; padding:10px 18px; display:flex; align-items:center; gap:10px;">
+              <div style="font-size:22px; font-weight:700; color:#2b2620;">{{ d.weatherIcon }} {{ d.weatherTemp }}</div>
+              <div style="font-size:11px; color:#a1906c; max-width:90px; line-height:1.3;">תחזית משוערת · אוגוסט</div>
+            </div>
+          </div>
+          <p style="color:#6b6152; font-size:16px; margin:0 0 22px; max-width:680px;">{{ d.blurb }}</p>
+
+          <sc-if value="{{ d.hasNotes }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex; flex-direction:column; gap:8px; margin-bottom:26px;">
+              <sc-for list="{{ d.notes }}" as="note" hint-placeholder-count="1">
+                <div style="background:#fbeee0; border:1px solid #e8c9a6; color:#8a4a25; border-radius:12px; padding:12px 18px; font-size:14.5px; font-weight:500; display:flex; align-items:center; gap:10px;">
+                  <span>⚠️</span><span>{{ note.text }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </sc-if>
+
+          <div style="display:flex; flex-wrap:wrap; gap:14px; align-items:stretch;">
+            <!-- TIMELINE -->
+            <div style="flex:2 1 440px; display:flex; flex-direction:column; gap:0;">
+              <sc-for list="{{ d.blocks }}" as="b" hint-placeholder-count="6">
+                <div style="display:flex; gap:16px;">
+                  <div style="display:flex; flex-direction:column; align-items:center; width:40px; flex-shrink:0;">
+                    <div style="{{ b.dotStyle }}">{{ b.icon }}</div>
+                    <div style="{{ b.lineStyle }}"></div>
+                  </div>
+
+                  <sc-if value="{{ b.isTravel }}" hint-placeholder-val="{{ false }}">
+                    <div style="flex:1; background:#eef3ee; border:1px dashed #9fb8a8; border-radius:14px; padding:14px 18px; margin-bottom:18px;">
+                      <div style="font-weight:600; color:#2c5347; margin-bottom:4px;">{{ b.title }}</div>
+                      <div style="font-size:14px; color:#4d5f54; display:flex; flex-wrap:wrap; gap:10px;">
+                        <sc-if value="{{ b.duration }}" hint-placeholder-val="{{ false }}"><span>⏱ {{ b.duration }}</span></sc-if>
+                        <sc-if value="{{ b.distance }}" hint-placeholder-val="{{ false }}"><span>📍 {{ b.distance }}</span></sc-if>
+                      </div>
+                      <sc-if value="{{ b.desc }}" hint-placeholder-val="{{ false }}"><div style="font-size:13.5px; color:#6b6152; margin-top:6px;">{{ b.desc }}</div></sc-if>
+                      <sc-if value="{{ b.hasPlace }}" hint-placeholder-val="{{ false }}">
+                        <a href="{{ b.mapHref }}" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:7px; margin-top:10px; padding:12px 16px; border-radius:999px; background:#2c5347; color:#f6f1e6; font-size:13.5px; font-weight:600; text-decoration:none; white-space:nowrap; box-shadow:0 1px 3px rgba(0,0,0,0.15);">
+                          <span style="position:relative; width:14px; height:14px; flex-shrink:0;"><span style="position:absolute; inset:0; background:#f6f1e6; border-radius:50% 50% 50% 0; transform:rotate(-45deg);"></span><span style="position:absolute; top:50%; left:50%; width:5px; height:5px; background:#2c5347; border-radius:50%; transform:translate(-50%,-60%);"></span></span>
+                          <span>פתח במפות</span>
+                        </a>
+                      </sc-if>
+                    </div>
+                  </sc-if>
+
+                  <sc-if value="{{ b.isHighlight }}" hint-placeholder-val="{{ false }}">
+                    <div style="flex:1; background:#fbeee0; border:1px solid #e8c9a6; border-radius:14px; padding:14px 18px; margin-bottom:18px;">
+                      <div style="font-size:12.5px; color:#8a4a25; font-weight:600; margin-bottom:3px;">{{ b.time }}</div>
+                      <div style="font-weight:700; color:#7a3d1f; margin-bottom:4px;">{{ b.title }}</div>
+                      <sc-if value="{{ b.desc }}" hint-placeholder-val="{{ false }}"><div style="font-size:14px; color:#8a4a25;">{{ b.desc }}</div></sc-if>
+                      <sc-if value="{{ b.hasPlace }}" hint-placeholder-val="{{ false }}">
+                        <a href="{{ b.mapHref }}" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:7px; margin-top:10px; padding:12px 16px; border-radius:999px; background:#7a3d1f; color:#fbeee0; font-size:13.5px; font-weight:600; text-decoration:none; white-space:nowrap; box-shadow:0 1px 3px rgba(0,0,0,0.15);">
+                          <span style="position:relative; width:14px; height:14px; flex-shrink:0;"><span style="position:absolute; inset:0; background:#fbeee0; border-radius:50% 50% 50% 0; transform:rotate(-45deg);"></span><span style="position:absolute; top:50%; left:50%; width:5px; height:5px; background:#7a3d1f; border-radius:50%; transform:translate(-50%,-60%);"></span></span>
+                          <span>פתח במפות</span>
+                        </a>
+                      </sc-if>
+                    </div>
+                  </sc-if>
+
+                  <sc-if value="{{ b.isDefault }}" hint-placeholder-val="{{ true }}">
+                    <div style="flex:1; background:#fffdf8; border:1px solid #eee3cd; border-radius:14px; padding:14px 18px; margin-bottom:18px;">
+                      <div style="font-size:12.5px; color:#a1906c; font-weight:600; margin-bottom:3px;">{{ b.time }}</div>
+                      <div style="font-weight:600; color:#2b2620; margin-bottom:4px;">{{ b.title }}</div>
+                      <sc-if value="{{ b.desc }}" hint-placeholder-val="{{ false }}"><div style="font-size:14px; color:#6b6152;">{{ b.desc }}</div></sc-if>
+                      <sc-if value="{{ b.hasPlace }}" hint-placeholder-val="{{ false }}">
+                        <a href="{{ b.mapHref }}" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:7px; margin-top:10px; padding:12px 16px; border-radius:999px; background:#2c5347; color:#f6f1e6; font-size:13.5px; font-weight:600; text-decoration:none; white-space:nowrap; box-shadow:0 1px 3px rgba(0,0,0,0.15);">
+                          <span style="position:relative; width:14px; height:14px; flex-shrink:0;"><span style="position:absolute; inset:0; background:#f6f1e6; border-radius:50% 50% 50% 0; transform:rotate(-45deg);"></span><span style="position:absolute; top:50%; left:50%; width:5px; height:5px; background:#2c5347; border-radius:50%; transform:translate(-50%,-60%);"></span></span>
+                          <span>פתח במפות</span>
+                        </a>
+                      </sc-if>
+                    </div>
+                  </sc-if>
+                </div>
+              </sc-for>
+            </div>
+
+            <!-- PHOTOS -->
+            <div style="flex:1 1 260px; display:flex; flex-direction:column; gap:14px; min-height:480px;">
+              <sc-for list="{{ d.photos }}" as="photo" hint-placeholder-count="3">
+                <div style="{{ photo.wrapStyle }}">
+                  <img src="{{ photo.src }}" alt="{{ photo.label }}" style="{{ photo.imgStyle }}">
+                  <span style="{{ photo.captionStyle }}">{{ photo.label }}</span>
+                </div>
+              </sc-for>
+            </div>
+
+            <!-- MAP -->
+            <div style="flex:1 1 100%; background:#eef3ee; border-radius:16px; overflow:hidden; border:1px solid #d7e3da;">
+              <a href="{{ d.mapLink }}" target="_blank" rel="noopener" dir="ltr" style="display:block; position:relative; width:100%; aspect-ratio:{{ d.mapAspect }}; overflow:hidden;">
+                <div style="position:absolute; inset:0; display:grid; grid-template-columns:repeat({{ d.mapCols }}, 1fr); grid-template-rows:repeat({{ d.mapRows }}, 1fr);">
+                  <sc-for list="{{ d.mapTiles }}" as="tile" hint-placeholder-count="4">
+                    <img src="{{ tile.src }}" alt="" style="width:100%; height:100%; object-fit:cover; display:block;">
+                  </sc-for>
+                </div>
+                <svg sc-camel-view-box="{{ d.mapViewBox }}" sc-camel-preserve-aspect-ratio="none" style="position:absolute; inset:0; width:100%; height:100%;">
+                  <polyline points="{{ d.routePoints }}" fill="none" stroke="#2c5347" stroke-width="{{ d.routeStrokeWidth }}" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"></polyline>
+                  <sc-for list="{{ d.stops }}" as="stop" hint-placeholder-count="0">
+                    <circle cx="{{ stop.x }}" cy="{{ stop.y }}" r="{{ stop.r }}" fill="#e8a23d" stroke="#ffffff" stroke-width="2"></circle>
+                  </sc-for>
+                  <circle cx="{{ d.startX }}" cy="{{ d.startY }}" r="{{ d.markerR }}" fill="#2c8a5b" stroke="#ffffff" stroke-width="2"></circle>
+                  <circle cx="{{ d.endX }}" cy="{{ d.endY }}" r="{{ d.markerR }}" fill="#c0392b" stroke="#ffffff" stroke-width="2"></circle>
+                </svg>
+              </a>
+              <a href="{{ d.mapLink }}" target="_blank" rel="noopener" style="display:block; text-align:center; padding:11px; font-size:14px; color:#2c5347; text-decoration:none; font-weight:600; background:#fffdf8;">פתח מסלול בגוגל מפות ↗</a>
+            </div>
+          </div>
+        </section>
+      </sc-if>
+    </sc-for>
+  </main>
+
+  <footer style="text-align:center; padding:30px; color:#a1906c; font-size:13px; border-top:1px solid #e6ddc9;">נבנה באהבה לקראת הטיול המשפחתי · שווייץ, אוגוסט 2026</footer>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script="">
+
+const RAW_DAYS = [
+  {
+    id: 'd1', date: '4.8', dateShort: "ב' 4.8", weekday: 'יום שני', icon: '🇨🇭', shortTitle: 'הגעה', title: 'הגעה לשווייץ', location: 'סנט מוריץ',
+    blurb: 'טיסה מתל אביב, הסעה פרטית מהשדה ונסיעה אלפינית ראשונה אל הריביירה של האלפים.',
+    highlight: 'צ׳ק-אין ל-Suvretta House + הליכה לאגם', dinner: 'Pizzeria Heuboden (Chesa Veglia)',
+    notes: [], noteShort: '',
+    weatherIcon: '☀️', weatherTemp: '13°–22°',
+    mapQuery: 'St. Moritz, Switzerland', lat: 46.4908, lon: 9.8355,
+    route: [[32.0853,34.7818],[47.4647,8.5492],[46.4908,9.8355]],
+    photos: [
+      { label: 'המראה מתל אביב', file: 'Airplane landing at zurich airport.jpg' },
+      { label: 'הגעה לסנט מוריץ', file: 'St. Moritz 2.jpg' },
+      { label: 'Suvretta House', file: 'Suvretta House 2012.jpg' },
+      { label: 'Lake St. Moritz', file: 'Lake St. Moritz.jpg' },
+    ],
+    sidePhotos: [],
+    blocks: [
+      { time: '08:00', icon: '✈️', title: 'המראה מתל אביב', desc: 'טיסת אל על LY347 לציריך', kind: 'flight' },
+      { time: '11:20', icon: '🛬', title: 'נחיתה בציריך', kind: 'flight' },
+      { time: '13:00–13:30', icon: '🚐', title: 'עלייה להסעה הפרטית', desc: '', kind: 'default' },
+      { time: null, icon: '🚐', title: 'נסיעה בהסעה לסנט מוריץ', duration: 'כ-3 שעות', distance: 'כ-205 ק"מ', desc: 'נסיעה מרהיבה דרך הרי האלפים השוויצריים', kind: 'travel' },
+      { time: null, icon: '🍽️', title: 'עצירת צהריים בדרך', duration: 'כשעה', desc: 'עצירה נעימה לארוחה קלה באחת העיירות שבדרך', kind: 'highlight' },
+      { time: '17:30', icon: '🏨', title: "צ'ק-אין ב-Suvretta House", desc: 'מלון יוקרה קלאסי הצמוד ליער, מהוותיקים והמפוארים בסנט מוריץ.', kind: 'default', place: 'Suvretta House, St. Moritz' },
+      { time: '18:00–19:00', icon: '🚶', title: 'הליכה קצרה סביב Lake St. Moritz', desc: 'טיילת שקטה סביב האגם עם נוף לכפר ולפסגות מסביב.', kind: 'default', place: 'Lake St. Moritz' },
+      { time: '19:00–19:45', icon: '🧳', title: 'מנוחה והתארגנות במלון', desc: 'זמן לנשום, להתרענן ולהתארגן לקראת ארוחת הערב', kind: 'default' },
+      { time: '19:45–20:00', icon: '🚗', title: 'נסיעה למסעדה', duration: 'כ-15 דקות', kind: 'travel', place: 'Pizzeria Heuboden Chesa Veglia, St. Moritz' },
+      { time: '20:00', icon: '🍽️', title: 'ארוחת ערב – Pizzeria Heuboden (Chesa Veglia)', desc: 'פיצריה איקונית וחמימה באחת הבקתות העתיקות והמקוריות בסנט מוריץ', kind: 'highlight' },
+    ]
+  },
+  {
+    id: 'd2', date: '5.8', dateShort: "ג' 5.8", weekday: 'יום שלישי', icon: '🚴', shortTitle: 'Val Fex', title: 'Val Fex', location: 'Val Fex',
+    blurb: 'רכיבה על אופניים חשמליים לעמק פסטורלי וסגור למכוניות.',
+    highlight: 'רכיבה ל-Val Fex + טיול בעמק', dinner: 'Chasellas',
+    notes: ['עמית, לירון וגאיה טסים ב-5.8 בשעה 07:00 (LY347) ונוחתים בציריך ב-10:20 ומצטרפים בהמשך היום ✈️'], noteShort: 'הצטרפות משפחתית',
+    weatherIcon: '⛅', weatherTemp: '11°–20°',
+    mapQuery: 'Val Fex, Switzerland', lat: 46.4650, lon: 9.7950,
+    route: [[46.4908,9.8355],[46.4278,9.7503],[46.4650,9.7950],[46.4908,9.8355]],
+    photos: [
+      { label: 'פנורמת עמק Val Fex', file: 'Panorama Val Fex - panoramio.jpg' },
+      { label: 'הכנסייה העתיקה בעמק', file: 'Fex church back.JPG' },
+    ],
+    sidePhotos: [
+      { label: 'אגם Sils הסמוך', file: 'Lago di Sils.jpg' },
+    ],
+    blocks: [
+      { time: '08:30–09:00', icon: '🥐', title: 'ארוחת בוקר במלון', kind: 'default' },
+      { time: '09:00', icon: '🚴', title: 'יציאה מהמלון עם אופניים חשמליים', desc: 'יציאה מ-Suvretta House לכיוון הכפר Sils Maria.', kind: 'default' },
+      { time: null, icon: '🚴', title: 'רכיבה ל-Sils Maria', distance: '11 ק"מ', duration: '40–50 דקות רכיבה', desc: 'רכיבה נינוחה לאורך האגמים והעמקים, עם נופים מרהיבים של הרי האנגדין.', kind: 'travel' },
+      { time: '09:45–10:30', icon: '☕', title: 'עצירה ב-Sils Maria', desc: 'הליכה ברחובות האבן, קפה בכיכר המרכזית ותצפיות יפות על אגם Sils.', kind: 'highlight', place: 'Sils Maria, Switzerland' },
+      { time: null, icon: '🚴', title: 'רכיבה ל-Val Fex', distance: '8 ק"מ', duration: '25–35 דקות רכיבה', desc: 'אחת מדרכי הרכיבה היפות ביותר בשווייץ, לאורך נהר, יערות ונוף אלפיני פתוח.', kind: 'travel' },
+      { time: '11:00–12:30', icon: '🥾', title: 'טיול בעמק Val Fex', desc: 'עמק שקט ללא רכבים, עם נחלים, פרות רועות, בקתות עץ ונוף הרים עוצר נשימה.', kind: 'default', place: 'Val Fex, Switzerland' },
+      { time: '12:30–14:30', icon: '🍽️', title: 'ארוחת צהריים – Hotel Fex Restaurant', desc: 'מסעדה אלפינית מסורתית עם מרפסת מול ההרים. מומלץ להזמין מנות מקומיות וקינוחים ביתיים.', kind: 'highlight', place: 'Hotel Fex Restaurant, Val Fex' },
+      { time: null, icon: '🚴', title: 'רכיבה חזרה למלון', distance: '20 ק"מ', duration: 'כשעה ורבע–שעה וחצי', desc: 'רכיבה רגועה חזרה דרך העמק והאגמים.', kind: 'travel', place: 'Suvretta House, St. Moritz' },
+      { time: '16:00–18:45', icon: '🏨', title: 'זמן חופשי במלון', desc: 'כשעתיים וחצי למקלחת, מנוחה או ישיבה בגינת המלון לפני ארוחת הערב.', kind: 'default' },
+      { time: '18:45–19:00', icon: '🚶', title: 'הליכה למסעדה', duration: 'כ-15 דקות', kind: 'travel', place: 'Chasellas Restaurant, St. Moritz' },
+      { time: '19:00', icon: '🍽️', title: 'ארוחת ערב – Chasellas', desc: 'מסעדה אלפינית אלגנטית במרחק הליכה מהמלון, עם אווירה אינטימית ותפריט שווייצרי איכותי.', kind: 'highlight', place: 'Chasellas Restaurant, St. Moritz' },
+    ]
+  },
+  {
+    id: 'd3', date: '6.8', dateShort: "ד' 6.8", weekday: 'יום רביעי', icon: '🐎', shortTitle: 'Val Roseg', title: 'Val Roseg + Pontresina', location: 'Val Roseg · Pontresina',
+    blurb: 'עמק רחב עם כרכרות סוסים, ואחר צהריים שקט ברחוב הראשי של פונטרזינה.',
+    highlight: 'כרכרה בעמק Val Roseg + פונטרזינה', dinner: 'Trutz',
+    notes: [], noteShort: '',
+    weatherIcon: '☀️', weatherTemp: '12°–21°',
+    mapQuery: 'Val Roseg, Pontresina, Switzerland', lat: 46.4900, lon: 9.9040,
+    route: [[46.4908,9.8355],[46.4900,9.9040],[46.4908,9.9033],[46.4908,9.8355]],
+    photos: [
+      { label: 'עמק Val Roseg', file: '084 2018 01 23 Val Roseg.jpg' },
+      { label: 'הכפר Pontresina', file: 'Pontresina Dorf.jpg' },
+      { label: 'רחוב ראשי בפונטרזינה', file: 'Pontresina-01.jpg' },
+    ],
+    sidePhotos: [
+      { label: 'רחובות פונטרזינה', file: 'CH Pontresina 0710 (11) (17069289907).jpg' },
+    ],
+    blocks: [
+      { time: '08:30–09:00', icon: '🥐', title: 'ארוחת בוקר במלון', kind: 'default' },
+      { time: '09:00–09:30', icon: '🚗', title: 'קבלת רכבים להשכרה במלון', desc: 'הרכבים יגיעו למלון, קבלה עד 09:30', kind: 'default' },
+      { time: '09:30', icon: '🚗', title: 'יציאה מהמלון ל-Val Roseg', duration: 'נסיעה כ-15 דק׳ או רכיבה כ-45 דק׳', desc: 'הדרך אל אחד העמקים הפראיים והיפים באנגדין, לרגלי הקרחונים', kind: 'travel', place: 'Val Roseg, Switzerland' },
+      { time: null, icon: '🐎', title: 'כרכרה / הליכה בעמק', desc: 'עמק פראי לרגלי קרחון Roseg, אפשר גם ברכיבה על כרכרות סוסים מסורתיות.', kind: 'default' },
+      { time: '13:00–15:00', icon: '🍽️', title: 'ארוחת צהריים – Hotel Roseg Restaurant', desc: 'מטבח הררי מפנק על רקע נוף הקרחונים - מנות עונתיות וקינוחים ביתיים', kind: 'highlight', place: 'Hotel Roseg Restaurant, Pontresina' },
+      { time: '15:00', icon: '🚗', title: 'נסיעה ל-Pontresina', duration: 'כ-10 דקות', desc: 'כפר אלפיני קסום עם בתי עץ מסורתיים מוקף בפסגות הבנרינה', kind: 'travel', place: 'Pontresina, Switzerland' },
+      { time: '15:15–16:30', icon: '🍦', title: 'קפה, גלידה וסיבוב ברחוב הראשי', desc: 'הרחוב הציורי של פונטרזינה עם בתי עץ מסורתיים וחנויות קטנות.', kind: 'default' },
+      { time: '16:30', icon: '🚗', title: 'חזרה למלון', duration: '10 דקות', kind: 'travel', place: 'Suvretta House, St. Moritz' },
+      { time: '16:40–18:45', icon: '🧳', title: 'זמן חופשי במלון', desc: 'כשעתיים לנשום, להתרענן ולהתארגן לקראת ארוחת הערב', kind: 'default' },
+      { time: '18:45–19:00', icon: '🚗', title: 'נסיעה למסעדה', duration: 'כ-15 דקות', kind: 'travel', place: 'Restaurant Trutz, Pontresina' },
+      { time: '19:00', icon: '🍽️', title: 'ארוחת ערב – Trutz', desc: 'מסעדה חמימה עם מטבח אלפיני מסורתי, מנות בשר ופסטה עשירות', kind: 'highlight', place: 'Restaurant Trutz, Pontresina' },
+    ]
+  },
+  {
+    id: 'd4', date: '7.8', dateShort: "ה' 7.8", weekday: 'יום חמישי', icon: '⛰️', shortTitle: 'Muottas Muragl', title: 'Muottas Muragl', location: 'Muottas Muragl',
+    blurb: 'עלייה בפוניקולר לנוף המרהיב ביותר באנגדין, עם הליכה על הרכס.',
+    highlight: 'פוניקולר + הליכה על הרכס', dinner: 'Stube',
+    notes: [], noteShort: '',
+    weatherIcon: '🌤️', weatherTemp: '10°–19°',
+    mapQuery: 'Muottas Muragl, Switzerland', lat: 46.5106, lon: 9.8746,
+    route: [[46.4908,9.8355],[46.5106,9.8746],[46.4908,9.8355]],
+    photos: [
+      { label: 'הפוניקולר ההיסטורי', file: 'Muottas Muragl3.jpg' },
+      { label: 'הנוף מ-Muottas Muragl על האנגדין', file: 'Upper Engadin as seen from Muottas Muragl.jpg' },
+      { label: 'האגם מול Piz Muragl', file: 'Sankt Moritz Lake Piz Muragl.jpg' },
+    ],
+    sidePhotos: [
+      { label: 'נוף האנגדין מלמעלה', file: 'Upper Engadin as seen from Las Sours.jpg' },
+    ],
+    blocks: [
+      { time: '08:30–09:00', icon: '🥐', title: 'ארוחת בוקר במלון', kind: 'default' },
+      { time: '09:00', icon: '🚞', title: 'יציאה מהמלון ועלייה בפוניקולר ל-Muottas Muragl', duration: 'נסיעה כ-15 דקות', desc: 'עלייה בפוניקולר ההיסטורי (משנת 1907) אל אחד הנופים היפים בשוויץ', kind: 'travel', place: 'Muottas Muragl, Switzerland' },
+      { time: '10:00–12:30', icon: '🥾', title: 'הליכה על הרכס לכיוון פונטרזינה', desc: 'מסלול פנורמי מעל שלושת אגמי אנגדין, עם עצירת קפה בדרך ☕', kind: 'default' },
+      { time: '13:30–15:30', icon: '🍽️', title: 'ארוחת צהריים – מסעדה בסיום המסלול', desc: 'ארוחה מפנקת עם נוף פתוח על ההרים - מומלץ לנסות את המנות המקומיות', kind: 'highlight' },
+      { time: '15:30', icon: '🚗', title: 'חזרה למלון', duration: 'כ-15 דקות', kind: 'travel', place: 'Suvretta House, St. Moritz' },
+      { time: '15:45–18:50', icon: '🧖', title: 'זמן חופשי במלון / ספא', desc: 'ספא המלון נחשב לאחד המפוארים בעולם - בריכות, סאונות ועיסויים ברמה יוצאת דופן', kind: 'default' },
+      { time: '18:50–19:00', icon: '🚶', title: 'הליכה למסעדה', duration: 'כ-10 דקות', kind: 'travel', place: 'Stube Restaurant, St. Moritz' },
+      { time: '19:00', icon: '🍽️', title: 'ארוחת ערב – Stube', desc: 'מסעדה נעימה ואינטימית עם מטבח שוויצרי מסורתי ופונדו איכותי', kind: 'highlight', place: 'Stube Restaurant, St. Moritz' },
+    ]
+  },
+  {
+    id: 'd5', date: '8.8', dateShort: "ו' 8.8", weekday: 'יום שישי', icon: '🌊', shortTitle: 'Silvaplana', title: 'Silvaplana + St. Moritz', location: 'Silvaplana · St. Moritz',
+    blurb: 'אגמים וקייטסרפרים ברוח, וערב רגוע בסנט מוריץ.',
+    highlight: 'אגם Silvaplana', dinner: 'Pizzeria',
+    notes: [], noteShort: '',
+    weatherIcon: '☀️', weatherTemp: '13°–22°',
+    mapQuery: 'Silvaplana, Switzerland', lat: 46.4581, lon: 9.8028,
+    route: [[46.4908,9.8355],[46.4581,9.8028],[46.4908,9.8355]],
+    photos: [
+      { label: 'אגם Silvaplana', file: 'Lake Silvaplana with Piz da la Margna.jpg' },
+    ],
+    sidePhotos: [
+      { label: 'הגשר בין האגמים', file: 'Innbrücke bei Silvaplana zwischen Silvaplaner See und Champfèrersee bei Tauwetter.jpg' },
+    ],
+    blocks: [
+      { time: '08:30–09:00', icon: '🥐', title: 'ארוחת בוקר במלון', kind: 'default' },
+      { time: '09:00', icon: '🚗', title: 'יציאה ל-Silvaplana', duration: 'כ-10 דקות', kind: 'travel' },
+      { time: '09:15–12:15', icon: '🚶', title: 'הליכה סביב האגם', desc: 'צפייה בקייטסרפינג (אם יש רוח)', kind: 'default', place: 'Lake Silvaplana' },
+      { time: '12:30–14:00', icon: '🍽️', title: 'ארוחת צהריים – Bellavista', desc: 'בית קפה ומסעדה עם מרפסת ונוף פתוח לאגמי אנגדין.', kind: 'highlight', place: 'Bellavista Silvaplana' },
+      { time: '14:15', icon: '🚶', title: 'חזרה ל-Lake St. Moritz + הליכה ל-Lej da Staz', desc: 'כ-30 דקות הליכה, שתייה במסעדה שעל שפת האגם', kind: 'default', place: 'Lej da Staz, St. Moritz' },
+      { time: '14:45', icon: '🚶', title: 'חזרה למלון', duration: 'כ-15 דקות הליכה', kind: 'travel', place: 'Suvretta House, St. Moritz' },
+      { time: '15:00–18:45', icon: '🧳', title: 'זמן חופשי במלון', desc: 'שעתיים ורבע לנשום, להתרענן ולהתארגן לקראת ארוחת הערב', kind: 'default' },
+      { time: '18:45–19:00', icon: '🚶', title: 'הליכה למסעדה', duration: 'כ-15 דקות', kind: 'travel' },
+      { time: '19:00', icon: '🍽️', title: 'ארוחת ערב – Pizzeria', desc: 'פיצה איטלקית אותנטית בסגנון קליל ומשפחתי - מושלם לסיום יום עמוס', kind: 'highlight' },
+    ]
+  },
+  {
+    id: 'd6', date: '9.8', dateShort: "ש' 9.8", weekday: 'שבת', icon: '🇮🇹✈️', shortTitle: 'ברנינה+מילאנו', title: 'Bernina Express ובדרך למילאנו', location: 'St. Moritz → מילאנו',
+    blurb: 'בוקר על רכבת Bernina Express האגדית, פרידה מסנט מוריץ, נסיעה דרך מעברי ההרים, וטיסה חזרה הביתה.',
+    highlight: 'רכבת Bernina Express + נסיעה למילאנו', dinner: '—',
+    notes: ['נסיעת הרכבת תלויה בלוח הזמנים – מומלץ לתאם כרטיסים מראש 🚆', 'טיסת חזרה LY388, המראה 22:55 מ-Milan Linate, נחיתה בת"א 03:40 – לתכנן זמן להסעה לשדה ולבידוק ביטחוני 🛃'], noteShort: 'לתאם כרטיסי רכבת',
+    weatherIcon: '☀️', weatherTemp: '16°–26°',
+    mapQuery: 'Milan, Italy', lat: 45.4642, lon: 9.1900,
+    route: [[46.4908,9.8355],[45.4642,9.1900]],
+    photos: [
+      { label: 'Suvretta House', file: 'Suvretta House 2012.jpg' },
+      { label: 'רכבת Bernina Express', file: 'Bernina Express train.jpg' },
+      { label: 'המראה חזרה לישראל', file: 'Takeoff of one of Linate airport (1993).jpg' },
+    ],
+    sidePhotos: [],
+    blocks: [
+      { time: '08:30–09:00', icon: '🥐', title: 'ארוחת בוקר במלון', kind: 'default' },
+      { time: '09:00–09:30', icon: '🚗', title: 'החזרת רכבים להשכרה במלון', kind: 'default' },
+      { time: '09:30–09:45', icon: '🚶', title: 'הליכה לתחנת הרכבת בסנט מוריץ', duration: 'כ-15 דקות', kind: 'travel', place: 'St. Moritz railway station' },
+      { time: '09:45–11:15', icon: '🚆', title: 'Bernina Express (או רכבת אזורית)', desc: 'אחת מנסיעות הרכבת היפות בעולם - מחברת בין שוויץ לאיטליה דרך נופי הרים עוצרי נשימה, מורשת עולמית של אונסק"ו. כשעה וחצי נסיעה נטו', kind: 'highlight' },
+      { time: '11:15–11:30', icon: '🚶', title: 'חזרה למלון', duration: 'כ-15 דקות', kind: 'travel', place: 'Suvretta House, St. Moritz' },
+      { time: '11:30–16:00', icon: '🧳', title: 'זמן פנוי, ארוחת צהריים והתארגנות לקראת היציאה', kind: 'default' },
+      { time: '16:00', icon: '🏨', title: "צ'ק-אאוט", kind: 'default' },
+      { time: null, icon: '🚐', title: 'נסיעה בהסעה למילאנו', duration: 'כ-3 שעות', distance: 'כ-180 ק"מ', desc: 'נסיעה נופית דרך מעברי ההרים - נוף אלפיני מרהיב עד ממש לפני הכניסה לאיטליה (תלוי בתנועה)', kind: 'travel' },
+      { time: '19:00', icon: '🛃', title: 'שדה התעופה במילאנו', kind: 'default', place: 'Milan Linate Airport' },
+      { time: '22:55', icon: '✈️', title: 'טיסת אל על LY388 חזרה לישראל', desc: 'המראה ממילאנו 22:55 · נחיתה בתל אביב 03:40', kind: 'highlight' },
+    ]
+  },
+];
+
+const PHOTO_RESOURCE_MAP = {
+  'Airplane landing at zurich airport.jpg': 'photo0',
+  'St. Moritz 2.jpg': 'photo1',
+  'Suvretta House 2012.jpg': 'photo2',
+  'Lake St. Moritz.jpg': 'photo3',
+  'Panorama Val Fex - panoramio.jpg': 'photo4',
+  'Fex church back.JPG': 'photo5',
+  'Lago di Sils.jpg': 'photo6',
+  '084 2018 01 23 Val Roseg.jpg': 'photo7',
+  'Pontresina Dorf.jpg': 'photo8',
+  'Pontresina-01.jpg': 'photo9',
+  'CH Pontresina 0710 (11) (17069289907).jpg': 'photo10',
+  'Muottas Muragl3.jpg': 'photo11',
+  'Upper Engadin as seen from Muottas Muragl.jpg': 'photo12',
+  'Sankt Moritz Lake Piz Muragl.jpg': 'photo13',
+  'Upper Engadin as seen from Las Sours.jpg': 'photo14',
+  'Lake Silvaplana with Piz da la Margna.jpg': 'photo15',
+  'Innbrücke bei Silvaplana zwischen Silvaplaner See und Champfèrersee bei Tauwetter.jpg': 'photo16',
+  'Bernina Express train.jpg': 'photo17',
+  'Takeoff of one of Linate airport (1993).jpg': 'photo18',
+};
+const HERO_RESOURCE_ID = 'heroImg';
+const TILE_RESOURCE_MAP = {
+  'https://tile.openstreetmap.org/4/7/5.png': 'tile0',
+  'https://tile.openstreetmap.org/4/8/5.png': 'tile1',
+  'https://tile.openstreetmap.org/4/9/5.png': 'tile2',
+  'https://tile.openstreetmap.org/4/7/6.png': 'tile3',
+  'https://tile.openstreetmap.org/4/8/6.png': 'tile4',
+  'https://tile.openstreetmap.org/4/9/6.png': 'tile5',
+  'https://tile.openstreetmap.org/12/2158/1448.png': 'tile6',
+  'https://tile.openstreetmap.org/12/2159/1448.png': 'tile7',
+  'https://tile.openstreetmap.org/12/2160/1448.png': 'tile8',
+  'https://tile.openstreetmap.org/12/2158/1449.png': 'tile9',
+  'https://tile.openstreetmap.org/12/2159/1449.png': 'tile10',
+  'https://tile.openstreetmap.org/12/2160/1449.png': 'tile11',
+  'https://tile.openstreetmap.org/12/2158/1450.png': 'tile12',
+  'https://tile.openstreetmap.org/12/2159/1450.png': 'tile13',
+  'https://tile.openstreetmap.org/12/2160/1450.png': 'tile14',
+  'https://tile.openstreetmap.org/13/4319/2898.png': 'tile15',
+  'https://tile.openstreetmap.org/13/4320/2898.png': 'tile16',
+  'https://tile.openstreetmap.org/13/4321/2898.png': 'tile17',
+  'https://tile.openstreetmap.org/13/4319/2897.png': 'tile18',
+  'https://tile.openstreetmap.org/13/4320/2897.png': 'tile19',
+  'https://tile.openstreetmap.org/13/4321/2897.png': 'tile20',
+  'https://tile.openstreetmap.org/13/4318/2897.png': 'tile21',
+  'https://tile.openstreetmap.org/13/4318/2898.png': 'tile22',
+  'https://tile.openstreetmap.org/13/4318/2899.png': 'tile23',
+  'https://tile.openstreetmap.org/13/4319/2899.png': 'tile24',
+  'https://tile.openstreetmap.org/13/4320/2899.png': 'tile25',
+  'https://tile.openstreetmap.org/8/134/90.png': 'tile26',
+  'https://tile.openstreetmap.org/8/135/90.png': 'tile27',
+  'https://tile.openstreetmap.org/8/134/91.png': 'tile28',
+  'https://tile.openstreetmap.org/8/135/91.png': 'tile29',
+};
+
+function mapsLink(q) { return 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(q); }
+function wikiImg(file) {
+  const url = WIKI_DIRECT_URL[file] || ('https://commons.wikimedia.org/wiki/Special:FilePath/' + encodeURIComponent(file) + '?width=500');
+  const id = PHOTO_RESOURCE_MAP[file];
+  return (window.__resources && id && window.__resources[id]) || url;
+}
+const WIKI_DIRECT_URL = {
+  'Airplane landing at zurich airport.jpg': 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Airplane_landing_at_zurich_airport.jpg/500px-Airplane_landing_at_zurich_airport.jpg',
+  'St. Moritz 2.jpg': 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/St._Moritz_2.jpg/500px-St._Moritz_2.jpg',
+  'Suvretta House 2012.jpg': 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Suvretta_House_2012.jpg/500px-Suvretta_House_2012.jpg',
+  'Lake St. Moritz.jpg': 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Lake_St._Moritz.jpg/500px-Lake_St._Moritz.jpg',
+  'Panorama Val Fex - panoramio.jpg': 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Panorama_Val_Fex_-_panoramio.jpg/500px-Panorama_Val_Fex_-_panoramio.jpg',
+  'Fex church back.JPG': 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Fex_church_back.JPG/500px-Fex_church_back.JPG',
+  'Lago di Sils.jpg': 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Lago_di_Sils.jpg/500px-Lago_di_Sils.jpg',
+  '084 2018 01 23 Val Roseg.jpg': 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/084_2018_01_23_Val_Roseg.jpg/500px-084_2018_01_23_Val_Roseg.jpg',
+  'Pontresina Dorf.jpg': 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Pontresina_Dorf.jpg/500px-Pontresina_Dorf.jpg',
+  'Pontresina-01.jpg': 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Pontresina-01.jpg/500px-Pontresina-01.jpg',
+  'CH Pontresina 0710 (11) (17069289907).jpg': 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/CH_Pontresina_0710_(11)_(17069289907).jpg/500px-CH_Pontresina_0710_(11)_(17069289907).jpg',
+  'Muottas Muragl3.jpg': 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Muottas_Muragl3.jpg/500px-Muottas_Muragl3.jpg',
+  'Upper Engadin as seen from Muottas Muragl.jpg': 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Upper_Engadin_as_seen_from_Muottas_Muragl.jpg/500px-Upper_Engadin_as_seen_from_Muottas_Muragl.jpg',
+  'Sankt Moritz Lake Piz Muragl.jpg': 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Sankt_Moritz_Lake_Piz_Muragl.jpg/500px-Sankt_Moritz_Lake_Piz_Muragl.jpg',
+  'Upper Engadin as seen from Las Sours.jpg': 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Upper_Engadin_as_seen_from_Las_Sours.jpg/500px-Upper_Engadin_as_seen_from_Las_Sours.jpg',
+  'Lake Silvaplana with Piz da la Margna.jpg': 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Lake_Silvaplana_with_Piz_da_la_Margna.jpg/500px-Lake_Silvaplana_with_Piz_da_la_Margna.jpg',
+  'Innbrücke bei Silvaplana zwischen Silvaplaner See und Champfèrersee bei Tauwetter.jpg': 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Innbr%C3%BCcke_bei_Silvaplana_zwischen_Silvaplaner_See_und_Champf%C3%A8rersee_bei_Tauwetter.jpg/500px-Innbr%C3%BCcke_bei_Silvaplana_zwischen_Silvaplaner_See_und_Champf%C3%A8rersee_bei_Tauwetter.jpg',
+  'Bernina Express train.jpg': 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Bernina_Express_train.jpg/500px-Bernina_Express_train.jpg',
+  'Takeoff of one of Linate airport (1993).jpg': 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Takeoff_of_one_of_Linate_airport_(1993).jpg/500px-Takeoff_of_one_of_Linate_airport_(1993).jpg',
+};
+
+function lonLatToFrac(lat, lon, z) {
+  const n = Math.pow(2, z);
+  const x = (lon + 180) / 360 * n;
+  const latRad = lat * Math.PI / 180;
+  const y = (1 - Math.log(Math.tan(latRad) + 1 / Math.cos(latRad)) / Math.PI) / 2 * n;
+  return { x, y };
+}
+
+function buildRouteMap(route) {
+  const lats = route.map(p => p[0]), lons = route.map(p => p[1]);
+  let latMin = Math.min(...lats), latMax = Math.max(...lats);
+  let lonMin = Math.min(...lons), lonMax = Math.max(...lons);
+  const latPad = Math.max(latMax - latMin, 0.006) * 0.35;
+  const lonPad = Math.max(lonMax - lonMin, 0.006) * 0.35;
+  latMin -= latPad; latMax += latPad; lonMin -= lonPad; lonMax += lonPad;
+
+  let chosen = null;
+  for (let z = 14; z >= 2; z--) {
+    const fA = lonLatToFrac(latMin, lonMin, z), fB = lonLatToFrac(latMax, lonMax, z);
+    const xs = [fA.x, fB.x], ys = [fA.y, fB.y];
+    const txMin = Math.floor(Math.min(...xs)), txMax = Math.floor(Math.max(...xs));
+    const tyMin = Math.floor(Math.min(...ys)), tyMax = Math.floor(Math.max(...ys));
+    const cols = txMax - txMin + 1, rows = tyMax - tyMin + 1;
+    if (cols <= 3 && rows <= 3) { chosen = { z, txMin, tyMin, cols, rows }; break; }
+  }
+  if (!chosen) chosen = { z: 3, txMin: 3, tyMin: 3, cols: 1, rows: 1 };
+
+  const { z, txMin, tyMin, cols, rows } = chosen;
+  const tiles = [];
+  for (let ry = 0; ry < rows; ry++) {
+    for (let rx = 0; rx < cols; rx++) {
+      const tileUrl = 'https://tile.openstreetmap.org/' + z + '/' + (txMin + rx) + '/' + (tyMin + ry) + '.png';
+      const tileId = TILE_RESOURCE_MAP[tileUrl];
+      tiles.push({ src: (window.__resources && tileId && window.__resources[tileId]) || tileUrl });
+    }
+  }
+  function project(lat, lon) {
+    const f = lonLatToFrac(lat, lon, z);
+    return { x: (f.x - txMin) * 256, y: (f.y - tyMin) * 256 };
+  }
+  const pts = route.map(p => project(p[0], p[1]));
+  const start = pts[0], end = pts[pts.length - 1];
+  const markerR = Math.max(6, cols * 2.2);
+  const stops = pts.slice(1, -1).map(p => ({ x: p.x, y: p.y, r: markerR * 0.7 }));
+  return {
+    mapCols: cols, mapRows: rows, mapAspect: cols + ' / ' + rows,
+    mapTiles: tiles,
+    mapViewBox: '0 0 ' + (cols * 256) + ' ' + (rows * 256),
+    routePoints: pts.map(p => p.x.toFixed(1) + ',' + p.y.toFixed(1)).join(' '),
+    startX: start.x, startY: start.y, endX: end.x, endY: end.y,
+    stops,
+    routeStrokeWidth: Math.max(3, cols * 1.3),
+    markerR,
+  };
+}
+
+const PHOTO_STYLES = [
+  { bg: '#d7e3da', stripe: '#c3d3c8' },
+  { bg: '#e3ddc9', stripe: '#d3caa9' },
+  { bg: '#dce3ea', stripe: '#c7d3de' },
+];
+
+class Component extends DCLogic {
+  state = { selected: 0, now: Date.now() };
+
+  componentDidMount() {
+    this._t = setInterval(() => this.setState({ now: Date.now() }), 1000);
+  }
+  componentWillUnmount() {
+    clearInterval(this._t);
+  }
+
+  renderVals() {
+    const selected = this.state.selected;
+    const target = new Date('2026-08-04T08:00:00+02:00').getTime();
+    let diff = Math.max(0, target - this.state.now);
+    const s = Math.floor(diff / 1000);
+    const countdownParts = [
+      { label: 'ימים', value: Math.floor(s / 86400) },
+      { label: 'שעות', value: Math.floor((s % 86400) / 3600) },
+      { label: 'דקות', value: Math.floor((s % 3600) / 60) },
+      { label: 'שניות', value: s % 60 },
+    ];
+
+    const days = RAW_DAYS.map((d, i) => {
+      const isActive = i === selected;
+      const blocks = d.blocks.map(b => ({
+        ...b,
+        isTravel: b.kind === 'travel',
+        isHighlight: b.kind === 'highlight',
+        isDefault: b.kind !== 'travel' && b.kind !== 'highlight',
+        hasPlace: !!b.place,
+        noPlace: !b.place,
+        mapHref: b.place ? mapsLink(b.place) : null,
+        dotStyle: 'width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;background:' + (b.kind === 'highlight' ? '#f3d3ae' : b.kind === 'travel' ? '#c9dccf' : '#efe8d6') + ';',
+        lineStyle: 'flex:1;width:2px;background:#e6ddc9;min-height:14px;',
+      }));
+
+      return {
+        ...d,
+        isActive,
+        select: () => this.setState({ selected: i }),
+        tabStyle: 'border:none; border-radius:14px; padding:12px 14px; cursor:pointer; text-align:center; flex:1 1 100px; min-width:90px; font-family:Heebo,sans-serif; transition:background 0.15s; ' +
+          (isActive ? 'background:#2c5347;color:#f6f1e6;' : 'background:#efe8d6;color:#4d4636;'),
+        hasNotes: d.notes.length > 0,
+        notes: d.notes.map(t => ({ text: t })),
+        mapLink: mapsLink(d.mapQuery),
+        ...buildRouteMap(d.route),
+        photos: [...d.photos, ...(d.sidePhotos || [])].map((p, idx) => {
+          const st = PHOTO_STYLES[idx % PHOTO_STYLES.length];
+          return {
+            label: p.label,
+            src: wikiImg(p.file),
+            wrapStyle: 'position:relative; flex:1; min-height:0; border-radius:14px; overflow:hidden; background:repeating-linear-gradient(45deg,' + st.bg + ',' + st.bg + ' 12px,' + st.stripe + ' 12px,' + st.stripe + ' 24px);',
+            imgStyle: 'position:absolute; inset:0; width:100%; height:100%; object-fit:cover;',
+            captionStyle: 'position:absolute; right:8px; bottom:6px; background:rgba(43,38,32,0.55); color:#f6f1e6; font-size:11.5px; padding:3px 9px; border-radius:8px; font-family:Heebo,sans-serif;',
+          };
+        }),
+        blocks,
+      };
+    });
+
+    return {
+      countdownParts,
+      days,
+      printPage: () => window.print(),
+      heroBgStyle: 'position:absolute; inset:0; background:linear-gradient(135deg, rgba(25,45,38,0.82) 0%, rgba(30,60,58,0.72) 45%, rgba(28,50,64,0.8) 100%), url(\'' + ((window.__resources && window.__resources[HERO_RESOURCE_ID]) || 'https://upload.wikimedia.org/wikipedia/commons/d/df/Upper_Engadin_as_seen_from_Muottas_Muragl.jpg') + '\') center 65% / cover no-repeat;',
+    };
+  }
+}
+
+</script>
+
+
+</body></html>
