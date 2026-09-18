@@ -2,298 +2,368 @@
 <html><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<title>טיול משפחתי בצפון איטליה · 26.9–2.10.2026</title>
+<meta name="description" content="לוז הטיול: עמק אאוסטה, אגמי פיימונטה, Stresa ו-Mottarone. כל יום, כל שעה, עם מפות וניווט.">
+<meta name="theme-color" content="#2c5347">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="he_IL">
+<meta property="og:title" content="טיול משפחתי בצפון איטליה">
+<meta property="og:description" content="26 בספטמבר – 2 באוקטובר 2026 · הלוז המלא, מפות וניווט">
+<meta property="og:image" content="assets/photos/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="טיול איטליה">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+<script>
+// אריח מפה שלא נמצא באתר: עוברים לשרת של OpenStreetMap
+document.addEventListener('error', function (e) {
+  var t = e.target;
+  if (t && t.tagName === 'IMG' && t.dataset && t.dataset.remote && t.dataset.remote.indexOf('http') === 0 && !t.dataset.retried) {
+    t.dataset.retried = '1';
+    t.src = t.dataset.remote;
+  }
+}, true);
+// שמירת האתר לשימוש בלי קליטה
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function () {
+    navigator.serviceWorker.register('sw.js').catch(function () {});
+  });
+}
+</script>
 <script src="assets/js/dc-runtime.js"></script>
 </head>
 <body>
 <x-dc>
 
 <helmet>
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&family=Rubik:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>/* hebrew */
-/* math */
-/* symbols */
-/* latin-ext */
-/* latin */
-/* hebrew */
-/* math */
-/* symbols */
-/* latin-ext */
-/* latin */
-/* hebrew */
-/* math */
-/* symbols */
-/* latin-ext */
-/* latin */
-/* hebrew */
-/* math */
-/* symbols */
-/* latin-ext */
-/* latin */
-/* hebrew */
-/* math */
-/* symbols */
-/* latin-ext */
-/* latin */
-/* hebrew */
-/* math */
-/* symbols */
-/* latin-ext */
-/* latin */
-/* arabic */
-/* cyrillic-ext */
-/* cyrillic */
-/* hebrew */
-/* latin-ext */
-/* latin */
-/* arabic */
-/* cyrillic-ext */
-/* cyrillic */
-/* hebrew */
-/* latin-ext */
-/* latin */
-/* arabic */
-/* cyrillic-ext */
-/* cyrillic */
-/* hebrew */
-/* latin-ext */
-/* latin */
-/* arabic */
-/* cyrillic-ext */
-/* cyrillic */
-/* hebrew */
-/* latin-ext */
-/* latin */
-/* arabic */
-/* cyrillic-ext */
-/* cyrillic */
-/* hebrew */
-/* latin-ext */
-/* latin */
-</style>
+  <link rel="stylesheet" href="assets/fonts/fonts.css">
   <style>
     * { box-sizing: border-box; }
-    body { margin: 0; -webkit-font-smoothing: antialiased; }
+    html { -webkit-text-size-adjust: 100%; }
+    body { margin: 0; background: #faf6ef; -webkit-font-smoothing: antialiased; }
+    button { font-family: inherit; }
+    a, button { -webkit-tap-highlight-color: transparent; }
+
+    .page { min-height: 100vh; background: #faf6ef; color: #2b2620; font-family: 'Heebo', sans-serif; line-height: 1.5; }
+
+    /* ---------- hero ---------- */
+    .hero { position: relative; padding: 72px 32px 48px; color: #f6f1e6; overflow: hidden; }
+    .hero-inner { max-width: 1080px; margin: 0 auto; position: relative; }
+    .hero-kicker { font-size: 15px; letter-spacing: 0.08em; opacity: 0.9; margin-bottom: 14px; }
+    .hero-title { font-family: 'Rubik', sans-serif; font-weight: 500; font-size: clamp(28px, 4.2vw, 44px); line-height: 1.2; margin: 0 0 14px; max-width: 1080px; text-shadow: 0 2px 18px rgba(0,0,0,0.25); }
+    .hero-sub { font-size: 19px; opacity: 0.9; margin: 0 0 28px; max-width: 640px; }
+    .hero-cards { display: flex; flex-wrap: wrap; gap: 12px; align-items: stretch; }
+    .card-glass { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.25); border-radius: 16px; }
+    .countdown { flex: 1 1 260px; padding: 18px 20px; display: flex; gap: 10px; align-items: center; justify-content: center; }
+    .cd-part { text-align: center; min-width: 44px; flex: 1; }
+    .cd-value { font-family: 'Rubik', sans-serif; font-weight: 600; font-size: 30px; }
+    .cd-unit { font-size: 12px; opacity: 0.75; margin-top: 2px; }
+    .cd-label { align-self: center; font-size: 13px; opacity: 0.8; border-right: 1px solid rgba(255,255,255,0.25); padding-right: 16px; margin-right: 2px; }
+    .flights { flex: 1 1 320px; padding: 16px 20px; font-size: 13.5px; display: flex; gap: 20px; }
+    .flight { flex: 1; display: flex; flex-direction: column; gap: 5px; }
+    .flight-title { font-size: 12px; opacity: 0.75; font-weight: 600; margin-bottom: 2px; }
+    .flight-row { display: flex; justify-content: space-between; gap: 10px; }
+    .fl-label { opacity: 0.75; }
+    .fl-value { font-weight: 600; }
+    .flights-divider { width: 1px; background: rgba(255,255,255,0.25); }
+    .btn-print { flex: 1 1 180px; min-height: 56px; background: #f6f1e6; color: #1f3d33; border: none; border-radius: 16px; padding: 16px; font-size: 15px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; white-space: nowrap; }
+
+    /* ---------- day tabs ---------- */
+    .tabs { position: sticky; top: 0; z-index: 20; background: rgba(250,246,239,0.96); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); border-bottom: 1px solid #e6ddc9; padding: 12px 24px; margin-top: 32px; }
+    .tabs-scroll { max-width: 1080px; margin: 0 auto; display: flex; gap: 10px; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+    .tabs-scroll::-webkit-scrollbar { display: none; }
+    .tab { border: none; border-radius: 14px; padding: 10px 12px; cursor: pointer; text-align: center; flex: 1 0 96px; min-width: 88px; min-height: 64px; background: #efe8d6; color: #4d4636; transition: background 0.15s; }
+    .tab.is-active { background: #2c5347; color: #f6f1e6; }
+    .tab-icon { display: block; font-size: 16px; line-height: 1.3; }
+    .tab-date { display: block; font-size: 11px; opacity: 0.75; }
+    .tab-title { display: block; font-weight: 600; font-size: 14px; line-height: 1.2; }
+    .tab-today { display: block; font-size: 10.5px; font-weight: 700; color: #b8741a; margin-top: 1px; }
+    .tab-today:empty { display: none; }
+    .tab.is-active .tab-today { color: #f3d3ae; }
+
+    /* ---------- day panel ---------- */
+    .main { max-width: 1080px; margin: 0 auto; padding: 32px 24px 72px; scroll-margin-top: 90px; }
+    .day-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 8px; }
+    .day-kicker { font-size: 13px; font-weight: 600; color: #a1906c; margin-bottom: 2px; }
+    .day-title-wrap { display: flex; align-items: center; gap: 14px; }
+    .day-icon { font-size: 34px; line-height: 1; }
+    .day-title { font-family: 'Rubik', sans-serif; font-weight: 500; font-size: 30px; line-height: 1.2; margin: 0; color: #1f3d33; }
+    .weather { background: #fffdf8; border: 1px solid #eee3cd; border-radius: 16px; padding: 10px 16px; display: flex; align-items: center; gap: 10px; }
+    .weather-temp { font-size: 22px; font-weight: 700; color: #2b2620; white-space: nowrap; }
+    .weather-note { font-size: 11px; color: #8f7f5c; max-width: 110px; line-height: 1.3; }
+    .blurb { color: #6b6152; font-size: 16px; margin: 0 0 20px; max-width: 680px; }
+    .notes { display: flex; flex-direction: column; gap: 8px; margin-bottom: 22px; }
+    .note { background: #fbeee0; border: 1px solid #e8c9a6; color: #8a4a25; border-radius: 12px; padding: 12px 16px; font-size: 14.5px; font-weight: 500; display: flex; align-items: flex-start; gap: 10px; }
+    .planb { background: #eef3ee; border: 1px solid #d7e3da; color: #2c5347; border-radius: 12px; padding: 12px 16px; font-size: 14.5px; margin-bottom: 24px; display: flex; align-items: flex-start; gap: 10px; }
+
+    .day-grid { display: flex; flex-wrap: wrap; gap: 14px; align-items: stretch; }
+    .timeline { flex: 2 1 440px; display: flex; flex-direction: column; min-width: 0; }
+    .tl-row { display: flex; gap: 16px; }
+    .tl-rail { display: flex; flex-direction: column; align-items: center; width: 40px; flex-shrink: 0; }
+    .dot { width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0; background: #efe8d6; }
+    .dot-highlight { background: #f3d3ae; }
+    .dot-travel { background: #c9dccf; }
+    .tl-line { flex: 1; width: 2px; background: #e6ddc9; min-height: 14px; }
+
+    .card { flex: 1; min-width: 0; border-radius: 14px; padding: 14px 18px; margin-bottom: 18px; --pill-bg: #2c5347; --pill-fg: #f6f1e6; }
+    .card-default { background: #fffdf8; border: 1px solid #eee3cd; }
+    .card-highlight { background: #fbeee0; border: 1px solid #e8c9a6; --pill-bg: #7a3d1f; --pill-fg: #fbeee0; }
+    .card-travel { background: #eef3ee; border: 1px dashed #9fb8a8; }
+    .card-time { font-size: 12.5px; font-weight: 600; margin-bottom: 3px; color: #8f7f5c; }
+    .card-highlight .card-time { color: #8a4a25; }
+    .card-travel .card-time { color: #4d5f54; }
+    .card-title { font-weight: 600; color: #2b2620; margin-bottom: 4px; }
+    .card-highlight .card-title { font-weight: 700; color: #7a3d1f; }
+    .card-travel .card-title { color: #2c5347; }
+    .card-desc { font-size: 14px; color: #6b6152; }
+    .card-highlight .card-desc { color: #8a4a25; }
+    .card-travel .card-desc { font-size: 13.5px; margin-top: 6px; }
+    .card-meta { font-size: 14px; color: #4d5f54; display: flex; flex-wrap: wrap; gap: 10px; }
+    .kids { display: inline-flex; align-items: center; gap: 6px; margin-top: 8px; background: #fff3cf; border: 1px solid #f0d98a; color: #6e5108; border-radius: 999px; padding: 3px 12px; font-size: 13px; font-weight: 600; }
+    .actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    .pill { display: inline-flex; align-items: center; justify-content: center; gap: 7px; min-height: 44px; padding: 0 18px; border-radius: 999px; font-size: 14px; font-weight: 600; text-decoration: none; white-space: nowrap; }
+    .pill-maps { background: var(--pill-bg); color: var(--pill-fg); box-shadow: 0 1px 3px rgba(0,0,0,0.15); }
+    .pill-waze { background: transparent; color: var(--pill-bg); border: 1.5px solid var(--pill-bg); }
+    .pin { position: relative; width: 14px; height: 14px; flex-shrink: 0; }
+    .pin::before { content: ''; position: absolute; inset: 0; background: var(--pill-fg); border-radius: 50% 50% 50% 0; transform: rotate(-45deg); }
+    .pin::after { content: ''; position: absolute; top: 50%; left: 50%; width: 5px; height: 5px; background: var(--pill-bg); border-radius: 50%; transform: translate(-50%, -60%); }
+
+    .photos { flex: 1 1 260px; display: flex; flex-direction: column; gap: 14px; min-height: 480px; }
+    .photo { position: relative; flex: 1; min-height: 0; margin: 0; border-radius: 14px; overflow: hidden; background: #e3ddc9; }
+    .photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .photo figcaption { position: absolute; right: 8px; bottom: 6px; max-width: calc(100% - 16px); background: rgba(43,38,32,0.62); color: #f6f1e6; font-size: 12px; padding: 3px 10px; border-radius: 8px; }
+
+    .map-box { flex: 1 1 100%; background: #eef3ee; border-radius: 16px; overflow: hidden; border: 1px solid #d7e3da; }
+    .map-link { display: block; position: relative; width: 100%; overflow: hidden; }
+    .map-grid { position: absolute; inset: 0; display: grid; }
+    .map-grid img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .map-svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .map-open { display: flex; align-items: center; justify-content: center; min-height: 48px; font-size: 14px; color: #2c5347; text-decoration: none; font-weight: 600; background: #fffdf8; }
+
+    .pager { display: flex; gap: 12px; margin-top: 28px; }
+    .pager-btn { flex: 1 1 0; max-width: calc(50% - 6px); min-height: 56px; border: 1px solid #d9cfb4; background: #fffdf8; color: #2c5347; border-radius: 14px; cursor: pointer; padding: 8px 14px; font-size: 15px; font-weight: 600; line-height: 1.25; }
+    .pager-btn:active { background: #efe8d6; }
+    .pager-next { margin-inline-start: auto; }
+    .pager-sub { display: block; font-size: 11.5px; font-weight: 500; color: #8f7f5c; }
+
+    /* ---------- info panel ---------- */
+    .info-lead { color: #6b6152; font-size: 16px; margin: 0 0 20px; max-width: 680px; }
+    .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 14px; }
+    .info-card { background: #fffdf8; border: 1px solid #eee3cd; border-radius: 16px; padding: 16px 18px; }
+    .info-title { font-family: 'Rubik', sans-serif; font-size: 17px; font-weight: 600; color: #1f3d33; margin: 0 0 6px; }
+    .info-row { display: flex; justify-content: space-between; align-items: center; gap: 12px; min-height: 44px; padding: 8px 0; border-top: 1px solid #f0e8d6; font-size: 14.5px; }
+    .info-row-first { border-top: none; }
+    .info-label { color: #6b6152; }
+    .info-value { font-weight: 600; color: #2b2620; text-align: left; }
+    .info-pending { color: #a89c80; font-weight: 500; }
+    .info-link { color: #2c5347; font-weight: 700; text-decoration: underline; padding: 8px 0; }
+    .info-text { font-size: 14.5px; color: #4d4636; margin: 6px 0 0; }
+    .status-ok { color: #2c6b3f; font-weight: 700; }
+    .status-wait { color: #8a4a25; font-weight: 700; }
+    .credits { margin-top: 20px; background: #fffdf8; border: 1px solid #eee3cd; border-radius: 16px; padding: 4px 18px; }
+    .credits summary { cursor: pointer; min-height: 48px; display: flex; align-items: center; font-weight: 600; color: #4d4636; }
+    .credit-row { display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-top: 1px solid #f0e8d6; font-size: 13px; color: #6b6152; }
+    .credit-note { font-size: 13px; color: #6b6152; padding: 8px 0 12px; }
+
+    .footer { text-align: center; padding: 30px 20px; color: #8f7f5c; font-size: 13px; border-top: 1px solid #e6ddc9; }
+
+    /* ---------- phones ---------- */
+    @media (max-width: 640px) {
+      .hero { padding: 36px 16px 24px; }
+      .hero-kicker { font-size: 14px; margin-bottom: 10px; }
+      .hero-sub { font-size: 16px; margin-bottom: 20px; }
+      .hero-cards { gap: 10px; }
+      .countdown { flex-wrap: wrap; padding: 14px 12px; gap: 6px; }
+      .cd-label { order: -1; flex: 1 1 100%; text-align: center; border-right: none; padding-right: 0; margin: 0 0 4px; }
+      .cd-value { font-size: 26px; }
+      .flights { flex-direction: column; gap: 12px; padding: 14px 16px; }
+      .flights-divider { width: 100%; height: 1px; }
+      .btn-print { flex-basis: 100%; }
+
+      .tabs { padding: 8px 12px; margin-top: 20px; }
+      .tabs-scroll { gap: 8px; }
+      .tab { flex: 0 0 84px; min-width: 0; padding: 8px 6px; }
+
+      .main { padding: 18px 16px 56px; scroll-margin-top: 84px; }
+      .day-icon { font-size: 28px; }
+      .day-title { font-size: 23px; }
+      .day-head { align-items: stretch; }
+      .weather { width: 100%; }
+      .weather-note { max-width: none; }
+      .blurb { font-size: 15px; margin-bottom: 16px; }
+
+      .day-grid { flex-direction: column; flex-wrap: nowrap; gap: 16px; }
+      .timeline { flex: none; }
+      .photos { order: -1; flex: none; flex-direction: row; min-height: 0; height: 190px; gap: 10px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; margin: 0 -16px; padding: 0 16px; }
+      .photos::-webkit-scrollbar { display: none; }
+      .photo { flex: 0 0 80%; scroll-snap-align: center; }
+      .tl-row { gap: 10px; }
+      .tl-rail { width: 32px; }
+      .dot { width: 32px; height: 32px; }
+      .card { padding: 12px 14px; margin-bottom: 14px; }
+      .actions { flex-wrap: nowrap; }
+      .actions .pill { flex: 1 1 0; min-width: 0; padding: 0 10px; font-size: 13.5px; white-space: normal; text-align: center; line-height: 1.2; }
+      .map-box { flex: none; }
+      .info-row { align-items: flex-start; }
+    }
+
     @media print {
-      .no-print { display: none !important; }
+      .no-print, .tabs, .pager, .actions { display: none !important; }
       .day-panel { display: block !important; page-break-inside: avoid; }
       .day-panel + .day-panel { margin-top: 36px; }
     }
   </style>
 </helmet>
 
-<div dir="rtl" lang="he" style="min-height:100vh; background:#faf6ef; color:#2b2620; font-family:'Heebo',sans-serif; line-height:1.5;">
+<div dir="rtl" lang="he" class="page">
 
   <!-- HERO -->
-  <header style="position:relative; padding:72px 32px 48px; color:#f6f1e6; overflow:hidden;">
+  <header class="hero">
     <div style="{{ heroBgStyle }}"></div>
-    <div style="max-width:1080px; margin:0 auto; position:relative;">
-      <div style="font-size:15px; letter-spacing:0.08em; opacity:0.9; margin-bottom:14px;">✈️ טיול משפחתי · צפון איטליה</div>
-      <h1 style="font-family:'Rubik',sans-serif; font-weight:500; font-size:clamp(15px,4.2vw,46px); margin:0 0 14px; max-width:1000px; white-space:nowrap; text-shadow:0 2px 18px rgba(0,0,0,0.25);">שבעה ימים בין אגמים, פסגות וכפרים אלפיניים</h1>
-      <p style="font-size:19px; opacity:0.9; margin:0 0 28px; max-width:640px;">26 בספטמבר – 2 באוקטובר 2026 · תל אביב ← מילאנו ← עמק אאוסטה ← אגמי פיימונטה ← תל אביב</p>
+    <div class="hero-inner">
+      <div class="hero-kicker">✈️ טיול משפחתי · צפון איטליה</div>
+      <h1 class="hero-title">שבעה ימים בין אגמים, פסגות וכפרים אלפיניים</h1>
+      <p class="hero-sub">26 בספטמבר – 2 באוקטובר 2026 · תל אביב ← מילאנו ← עמק אאוסטה ← אגמי פיימונטה ← תל אביב</p>
 
-      <div style="display:flex; flex-wrap:wrap; gap:12px; align-items:stretch;">
-        <div dir="ltr" style="flex:1 1 260px; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.25); border-radius:16px; padding:18px 20px; display:flex; gap:10px; align-items:center; justify-content:center;">
+      <div class="hero-cards">
+        <div dir="ltr" class="card-glass countdown">
           <sc-for list="{{ countdownParts }}" as="part" hint-placeholder-count="4">
-            <div style="text-align:center; min-width:44px; flex:1;">
-              <div style="font-family:'Rubik',sans-serif; font-weight:600; font-size:30px;">{{ part.value }}</div>
-              <div style="font-size:12px; opacity:0.75; margin-top:2px;">{{ part.label }}</div>
+            <div class="cd-part">
+              <div class="cd-value">{{ part.value }}</div>
+              <div class="cd-unit">{{ part.label }}</div>
             </div>
           </sc-for>
-          <div style="align-self:center; font-size:13px; opacity:0.8; border-right:1px solid rgba(255,255,255,0.25); padding-right:16px; margin-right:2px;">עד ההגעה לנתב"ג</div>
+          <div class="cd-label">עד ההגעה לנתב"ג</div>
         </div>
 
-        <div style="flex:1 1 320px; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.25); border-radius:16px; padding:16px 20px; font-size:13.5px; display:flex; gap:20px;">
-          <div style="flex:1; display:flex; flex-direction:column; gap:5px;">
-            <div style="font-size:12px; opacity:0.75; font-weight:600; margin-bottom:2px;">🛫 הלוך · תל אביב → מילאנו</div>
-            <div style="display:flex; justify-content:space-between; gap:10px;"><span style="opacity:0.75;">שעת המראה:</span><span style="font-weight:600;">יעודכן</span></div>
-            <div style="display:flex; justify-content:space-between; gap:10px;"><span style="opacity:0.75;">שעת נחיתה:</span><span style="font-weight:600;">14:00</span></div>
-            <div style="display:flex; justify-content:space-between; gap:10px;"><span style="opacity:0.75;">חברת תעופה:</span><span style="font-weight:600;">Wizz Air</span></div>
+        <div class="card-glass flights">
+          <div class="flight">
+            <div class="flight-title">🛫 הלוך · תל אביב → מילאנו</div>
+            <div class="flight-row"><span class="fl-label">שעת המראה:</span><span class="fl-value">יעודכן</span></div>
+            <div class="flight-row"><span class="fl-label">שעת נחיתה:</span><span class="fl-value">14:00</span></div>
+            <div class="flight-row"><span class="fl-label">חברת תעופה:</span><span class="fl-value">Wizz Air</span></div>
           </div>
-          <div style="width:1px; background:rgba(255,255,255,0.25);"></div>
-          <div style="flex:1; display:flex; flex-direction:column; gap:5px;">
-            <div style="font-size:12px; opacity:0.75; font-weight:600; margin-bottom:2px;">🛬 חזור · מילאנו → תל אביב</div>
-            <div style="display:flex; justify-content:space-between; gap:10px;"><span style="opacity:0.75;">שעת המראה:</span><span style="font-weight:600;">13:00</span></div>
-            <div style="display:flex; justify-content:space-between; gap:10px;"><span style="opacity:0.75;">שעת נחיתה:</span><span style="font-weight:600;">יעודכן</span></div>
-            <div style="display:flex; justify-content:space-between; gap:10px;"><span style="opacity:0.75;">מספר טיסה:</span><span style="font-weight:600;">יעודכן</span></div>
+          <div class="flights-divider"></div>
+          <div class="flight">
+            <div class="flight-title">🛬 חזור · מילאנו → תל אביב</div>
+            <div class="flight-row"><span class="fl-label">שעת המראה:</span><span class="fl-value">13:00</span></div>
+            <div class="flight-row"><span class="fl-label">שעת נחיתה:</span><span class="fl-value">יעודכן</span></div>
+            <div class="flight-row"><span class="fl-label">מספר טיסה:</span><span class="fl-value">יעודכן</span></div>
           </div>
         </div>
 
-        <button class="no-print" onclick="{{ printPage }}" style="flex:1 1 180px; background:#f6f1e6; color:#1f3d33; border:none; border-radius:16px; padding:16px 16px; font-size:15px; font-weight:600; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px; white-space:nowrap;">🖨️ הדפסה / PDF</button>
+        <button class="no-print btn-print" onclick="{{ printPage }}">🖨️ הדפסה / PDF</button>
       </div>
     </div>
   </header>
 
   <!-- DAY TABS -->
-  <nav class="no-print" style="position:sticky; top:0; z-index:20; background:#faf6ef; border-bottom:1px solid #e6ddc9; padding:14px 24px; margin-top:32px;">
-    <div style="max-width:1080px; margin:0 auto; display:flex; gap:10px; overflow-x:auto;">
-      <sc-for list="{{ days }}" as="d" hint-placeholder-count="6">
-        <button onclick="{{ d.select }}" style="{{ d.tabStyle }}">
-          <span>{{ d.icon }}</span>
-          <span style="display:block; font-size:11px; opacity:0.75;">{{ d.dateShort }}</span>
-          <span style="display:block; font-weight:600;">{{ d.shortTitle }}</span>
+  <nav class="no-print tabs" id="tabs">
+    <div class="tabs-scroll">
+      <sc-for list="{{ days }}" as="d" hint-placeholder-count="7">
+        <button class="{{ d.tabClass }}" onclick="{{ d.select }}" data-active="{{ d.activeAttr }}">
+          <span class="tab-icon">{{ d.icon }}</span>
+          <span class="tab-date">{{ d.dateShort }}</span>
+          <span class="tab-title">{{ d.shortTitle }}</span>
+          <span class="tab-today">{{ d.todayLabel }}</span>
         </button>
       </sc-for>
+      <button class="{{ infoTabClass }}" onclick="{{ selectInfo }}" data-active="{{ infoActiveAttr }}">
+        <span class="tab-icon">ℹ️</span>
+        <span class="tab-date">שימושי</span>
+        <span class="tab-title">מידע</span>
+      </button>
     </div>
   </nav>
 
-  <!-- DAY PANELS -->
-  <main style="max-width:1080px; margin:0 auto; padding:36px 24px 80px;">
-    <sc-for list="{{ days }}" as="d" hint-placeholder-count="6">
+  <!-- PANELS -->
+  <main class="main" id="panel-top">
+    <sc-for list="{{ days }}" as="d" hint-placeholder-count="7">
       <sc-if value="{{ d.isActive }}" hint-placeholder-val="{{ true }}">
-        <section class="day-panel" style="animation:none;">
-          <div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:16px; margin-bottom:6px;">
-            <div style="display:flex; flex-wrap:wrap; align-items:baseline; gap:14px;">
-              <span style="font-size:34px;">{{ d.icon }}</span>
-              <h2 style="font-family:'Rubik',sans-serif; font-weight:500; font-size:30px; margin:0; color:#1f3d33;">{{ d.weekday }} {{ d.dateShort }} · {{ d.title }}</h2>
+        <section class="day-panel">
+          <div class="day-head">
+            <div class="day-title-wrap">
+              <span class="day-icon">{{ d.icon }}</span>
+              <div>
+                <div class="day-kicker">{{ d.kicker }}</div>
+                <h2 class="day-title">{{ d.title }}</h2>
+              </div>
             </div>
-            <div style="background:#fffdf8; border:1px solid #eee3cd; border-radius:16px; padding:10px 18px; display:flex; align-items:center; gap:10px;">
-              <div style="font-size:22px; font-weight:700; color:#2b2620;">{{ d.weatherIcon }} {{ d.weatherTemp }}</div>
-              <div style="font-size:11px; color:#a1906c; max-width:90px; line-height:1.3;">תחזית משוערת · סתיו</div>
+            <div class="weather">
+              <div class="weather-temp">{{ d.weatherIcon }} <span dir="ltr">{{ d.weatherTemp }}</span></div>
+              <div class="weather-note">{{ d.weatherNote }}</div>
             </div>
           </div>
-          <p style="color:#6b6152; font-size:16px; margin:0 0 22px; max-width:680px;">{{ d.blurb }}</p>
+          <p class="blurb">{{ d.blurb }}</p>
 
           <sc-if value="{{ d.hasNotes }}" hint-placeholder-val="{{ false }}">
-            <div style="display:flex; flex-direction:column; gap:8px; margin-bottom:26px;">
+            <div class="notes">
               <sc-for list="{{ d.notes }}" as="note" hint-placeholder-count="1">
-                <div style="background:#fbeee0; border:1px solid #e8c9a6; color:#8a4a25; border-radius:12px; padding:12px 18px; font-size:14.5px; font-weight:500; display:flex; align-items:center; gap:10px;">
-                  <span>⚠️</span><span>{{ note.text }}</span>
-                </div>
+                <div class="note"><span>⚠️</span><span>{{ note.text }}</span></div>
               </sc-for>
             </div>
           </sc-if>
 
-          <div style="display:flex; flex-wrap:wrap; gap:14px; align-items:stretch;">
+          <sc-if value="{{ d.hasPlanB }}" hint-placeholder-val="{{ false }}">
+            <div class="planb"><span>☔</span><span><strong>אם יורד גשם:</strong> {{ d.planB }}</span></div>
+          </sc-if>
+
+          <div class="day-grid">
             <!-- TIMELINE -->
-            <div style="flex:2 1 440px; display:flex; flex-direction:column; gap:0;">
+            <div class="timeline">
               <sc-for list="{{ d.blocks }}" as="b" hint-placeholder-count="6">
-                <div style="display:flex; gap:16px;">
-                  <div style="display:flex; flex-direction:column; align-items:center; width:40px; flex-shrink:0;">
-                    <div style="{{ b.dotStyle }}">{{ b.icon }}</div>
-                    <div style="{{ b.lineStyle }}"></div>
+                <div class="tl-row">
+                  <div class="tl-rail">
+                    <div class="{{ b.dotClass }}">{{ b.icon }}</div>
+                    <div class="tl-line"></div>
                   </div>
 
-                  <sc-if value="{{ b.isTravel }}" hint-placeholder-val="{{ false }}">
-                    <div style="flex:1; background:#eef3ee; border:1px dashed #9fb8a8; border-radius:14px; padding:14px 18px; margin-bottom:18px;">
-                      <sc-if value="{{ b.time }}" hint-placeholder-val="{{ false }}"><div style="font-size:12.5px; color:#4d5f54; font-weight:600; margin-bottom:3px;">{{ b.time }}</div></sc-if>
-                      <div style="font-weight:600; color:#2c5347; margin-bottom:4px;">{{ b.title }}</div>
-                      <div style="font-size:14px; color:#4d5f54; display:flex; flex-wrap:wrap; gap:10px;">
+                  <div class="{{ b.cardClass }}">
+                    <sc-if value="{{ b.time }}" hint-placeholder-val="{{ false }}"><div class="card-time">{{ b.time }}</div></sc-if>
+                    <div class="card-title">{{ b.title }}</div>
+                    <sc-if value="{{ b.isTravel }}" hint-placeholder-val="{{ false }}">
+                      <div class="card-meta">
                         <sc-if value="{{ b.duration }}" hint-placeholder-val="{{ false }}"><span>⏱ {{ b.duration }}</span></sc-if>
                         <sc-if value="{{ b.distance }}" hint-placeholder-val="{{ false }}"><span>📍 {{ b.distance }}</span></sc-if>
                       </div>
-                      <sc-if value="{{ b.desc }}" hint-placeholder-val="{{ false }}"><div style="font-size:13.5px; color:#6b6152; margin-top:6px;">{{ b.desc }}</div></sc-if>
-                      <sc-if value="{{ b.hasPlace }}" hint-placeholder-val="{{ false }}">
-                        <a href="{{ b.mapHref }}" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:7px; margin-top:10px; padding:12px 16px; border-radius:999px; background:#2c5347; color:#f6f1e6; font-size:13.5px; font-weight:600; text-decoration:none; white-space:nowrap; box-shadow:0 1px 3px rgba(0,0,0,0.15);">
-                          <span style="position:relative; width:14px; height:14px; flex-shrink:0;"><span style="position:absolute; inset:0; background:#f6f1e6; border-radius:50% 50% 50% 0; transform:rotate(-45deg);"></span><span style="position:absolute; top:50%; left:50%; width:5px; height:5px; background:#2c5347; border-radius:50%; transform:translate(-50%,-60%);"></span></span>
-                          <span>פתח במפות</span>
-                        </a>
-                      </sc-if>
-                    </div>
-                  </sc-if>
-
-                  <sc-if value="{{ b.isHighlight }}" hint-placeholder-val="{{ false }}">
-                    <div style="flex:1; background:#fbeee0; border:1px solid #e8c9a6; border-radius:14px; padding:14px 18px; margin-bottom:18px;">
-                      <sc-if value="{{ b.time }}" hint-placeholder-val="{{ false }}"><div style="font-size:12.5px; color:#8a4a25; font-weight:600; margin-bottom:3px;">{{ b.time }}</div></sc-if>
-                      <div style="font-weight:700; color:#7a3d1f; margin-bottom:4px;">{{ b.title }}</div>
-                      <sc-if value="{{ b.desc }}" hint-placeholder-val="{{ false }}"><div style="font-size:14px; color:#8a4a25;">{{ b.desc }}</div></sc-if>
-                      <sc-if value="{{ b.hasPlace }}" hint-placeholder-val="{{ false }}">
-                        <a href="{{ b.mapHref }}" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:7px; margin-top:10px; padding:12px 16px; border-radius:999px; background:#7a3d1f; color:#fbeee0; font-size:13.5px; font-weight:600; text-decoration:none; white-space:nowrap; box-shadow:0 1px 3px rgba(0,0,0,0.15);">
-                          <span style="position:relative; width:14px; height:14px; flex-shrink:0;"><span style="position:absolute; inset:0; background:#fbeee0; border-radius:50% 50% 50% 0; transform:rotate(-45deg);"></span><span style="position:absolute; top:50%; left:50%; width:5px; height:5px; background:#7a3d1f; border-radius:50%; transform:translate(-50%,-60%);"></span></span>
-                          <span>פתח במפות</span>
-                        </a>
-                      </sc-if>
-                    </div>
-                  </sc-if>
-
-                  <sc-if value="{{ b.isDefault }}" hint-placeholder-val="{{ true }}">
-                    <div style="flex:1; background:#fffdf8; border:1px solid #eee3cd; border-radius:14px; padding:14px 18px; margin-bottom:18px;">
-                      <sc-if value="{{ b.time }}" hint-placeholder-val="{{ false }}"><div style="font-size:12.5px; color:#a1906c; font-weight:600; margin-bottom:3px;">{{ b.time }}</div></sc-if>
-                      <div style="font-weight:600; color:#2b2620; margin-bottom:4px;">{{ b.title }}</div>
-                      <sc-if value="{{ b.desc }}" hint-placeholder-val="{{ false }}"><div style="font-size:14px; color:#6b6152;">{{ b.desc }}</div></sc-if>
-                      <sc-if value="{{ b.hasPlace }}" hint-placeholder-val="{{ false }}">
-                        <a href="{{ b.mapHref }}" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:7px; margin-top:10px; padding:12px 16px; border-radius:999px; background:#2c5347; color:#f6f1e6; font-size:13.5px; font-weight:600; text-decoration:none; white-space:nowrap; box-shadow:0 1px 3px rgba(0,0,0,0.15);">
-                          <span style="position:relative; width:14px; height:14px; flex-shrink:0;"><span style="position:absolute; inset:0; background:#f6f1e6; border-radius:50% 50% 50% 0; transform:rotate(-45deg);"></span><span style="position:absolute; top:50%; left:50%; width:5px; height:5px; background:#2c5347; border-radius:50%; transform:translate(-50%,-60%);"></span></span>
-                          <span>פתח במפות</span>
-                        </a>
-                      </sc-if>
-                    </div>
-                  </sc-if>
+                    </sc-if>
+                    <sc-if value="{{ b.desc }}" hint-placeholder-val="{{ false }}"><div class="card-desc">{{ b.desc }}</div></sc-if>
+                    <sc-if value="{{ b.kids }}" hint-placeholder-val="{{ false }}"><div class="kids">🛝 גינה ליובלי</div></sc-if>
+                    <sc-if value="{{ b.hasPlace }}" hint-placeholder-val="{{ false }}">
+                      <div class="actions">
+                        <a class="pill pill-maps" href="{{ b.mapHref }}" target="_blank" rel="noopener"><span class="pin"></span><span>פתח במפות</span></a>
+                        <sc-if value="{{ b.hasWaze }}" hint-placeholder-val="{{ false }}">
+                          <a class="pill pill-waze" href="{{ b.wazeHref }}" target="_blank" rel="noopener"><span>🚙</span><span>ניווט ב-Waze</span></a>
+                        </sc-if>
+                      </div>
+                    </sc-if>
+                  </div>
                 </div>
               </sc-for>
             </div>
 
             <!-- PHOTOS -->
-            <div style="flex:1 1 260px; display:flex; flex-direction:column; gap:14px; min-height:480px;">
+            <div class="photos">
               <sc-for list="{{ d.photos }}" as="photo" hint-placeholder-count="3">
-                <div style="{{ photo.wrapStyle }}">
-                  <img src="{{ photo.src }}" alt="{{ photo.label }}" style="{{ photo.imgStyle }}">
-                  <span style="{{ photo.captionStyle }}">{{ photo.label }}</span>
-                </div>
+                <figure class="photo">
+                  <img src="{{ photo.src }}" alt="{{ photo.label }}" loading="lazy" decoding="async">
+                  <figcaption>{{ photo.label }}</figcaption>
+                </figure>
               </sc-for>
             </div>
 
             <!-- MAP -->
-            <div style="flex:1 1 100%; background:#eef3ee; border-radius:16px; overflow:hidden; border:1px solid #d7e3da;">
-              <a href="{{ d.mapLink }}" target="_blank" rel="noopener" dir="ltr" style="display:block; position:relative; width:100%; aspect-ratio:{{ d.mapAspect }}; overflow:hidden;">
-                <div style="position:absolute; inset:0; display:grid; grid-template-columns:repeat({{ d.mapCols }}, 1fr); grid-template-rows:repeat({{ d.mapRows }}, 1fr);">
+            <div class="map-box">
+              <a class="map-link" href="{{ d.mapLink }}" target="_blank" rel="noopener" dir="ltr" style="aspect-ratio:{{ d.mapAspect }};">
+                <div class="map-grid" style="grid-template-columns:repeat({{ d.mapCols }}, 1fr); grid-template-rows:repeat({{ d.mapRows }}, 1fr);">
                   <sc-for list="{{ d.mapTiles }}" as="tile" hint-placeholder-count="4">
-                    <img src="{{ tile.src }}" alt="" style="width:100%; height:100%; object-fit:cover; display:block;">
+                    <img src="{{ tile.src }}" data-remote="{{ tile.remote }}" alt="">
                   </sc-for>
                 </div>
-                <svg sc-camel-view-box="{{ d.mapViewBox }}" sc-camel-preserve-aspect-ratio="none" style="position:absolute; inset:0; width:100%; height:100%;">
+                <svg class="map-svg" sc-camel-view-box="{{ d.mapViewBox }}" sc-camel-preserve-aspect-ratio="none">
                   <polyline points="{{ d.routePoints }}" fill="none" stroke="#2c5347" stroke-width="{{ d.routeStrokeWidth }}" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"></polyline>
                   <sc-for list="{{ d.stops }}" as="stop" hint-placeholder-count="0">
                     <circle cx="{{ stop.x }}" cy="{{ stop.y }}" r="{{ stop.r }}" fill="#e8a23d" stroke="#ffffff" stroke-width="2"></circle>
@@ -302,15 +372,71 @@
                   <circle cx="{{ d.endX }}" cy="{{ d.endY }}" r="{{ d.markerR }}" fill="#c0392b" stroke="#ffffff" stroke-width="2"></circle>
                 </svg>
               </a>
-              <a href="{{ d.mapLink }}" target="_blank" rel="noopener" style="display:block; text-align:center; padding:11px; font-size:14px; color:#2c5347; text-decoration:none; font-weight:600; background:#fffdf8;">פתח מסלול בגוגל מפות ↗</a>
+              <a class="map-open" href="{{ d.mapLink }}" target="_blank" rel="noopener">פתח מסלול בגוגל מפות ↗</a>
             </div>
+          </div>
+
+          <div class="pager no-print">
+            <sc-if value="{{ d.hasPrev }}" hint-placeholder-val="{{ false }}">
+              <button class="pager-btn" onclick="{{ d.goPrev }}"><span class="pager-sub">→ היום הקודם</span>{{ d.prevLabel }}</button>
+            </sc-if>
+            <button class="pager-btn pager-next" onclick="{{ d.goNext }}"><span class="pager-sub">{{ d.nextSub }} ←</span>{{ d.nextLabel }}</button>
           </div>
         </section>
       </sc-if>
     </sc-for>
+
+    <sc-if value="{{ isInfo }}" hint-placeholder-val="{{ false }}">
+      <section class="day-panel">
+        <div class="day-head">
+          <div class="day-title-wrap">
+            <span class="day-icon">ℹ️</span>
+            <div>
+              <div class="day-kicker">הכל במקום אחד</div>
+              <h2 class="day-title">מידע חשוב</h2>
+            </div>
+          </div>
+        </div>
+        <p class="info-lead">מלונות, טיסות, רכבים וטלפונים לשעת חירום. פרטים שעוד לא התקבלו מסומנים "יעודכן".</p>
+
+        <div class="info-grid">
+          <sc-for list="{{ infoSections }}" as="sec" hint-placeholder-count="6">
+            <div class="info-card">
+              <h3 class="info-title">{{ sec.icon }} {{ sec.title }}</h3>
+              <sc-for list="{{ sec.items }}" as="it" hint-placeholder-count="4">
+                <div class="{{ it.rowClass }}">
+                  <span class="info-label">{{ it.label }}</span>
+                  <sc-if value="{{ it.hasHref }}" hint-placeholder-val="{{ false }}"><a class="info-link" href="{{ it.href }}" target="_blank" rel="noopener">{{ it.value }}</a></sc-if>
+                  <sc-if value="{{ it.noHref }}" hint-placeholder-val="{{ true }}"><span class="{{ it.valueClass }}">{{ it.value }}</span></sc-if>
+                </div>
+              </sc-for>
+            </div>
+          </sc-for>
+
+          <div class="info-card">
+            <h3 class="info-title">📶 שימוש בלי קליטה</h3>
+            <div class="info-row info-row-first"><span class="info-label">מצב באתר</span><span class="{{ offlineClass }}">{{ offlineText }}</span></div>
+            <p class="info-text">כדי שהאתר יישמר בטלפון, פותחים אותו פעם אחת עם אינטרנט ומחכים כמה שניות. אחר כך הוא עובד גם בהרים בלי קליטה.</p>
+            <p class="info-text">להוספה למסך הבית: באייפון, שיתוף ← הוספה למסך הבית. באנדרואיד, תפריט ← התקנת אפליקציה.</p>
+          </div>
+        </div>
+
+        <details class="credits">
+          <summary>קרדיט לתמונות ולמפות</summary>
+          <div class="credit-note">התמונות מ-Wikimedia Commons ברישיונות פתוחים. המפות © תורמי OpenStreetMap. התחזית מ-Open-Meteo.com.</div>
+          <sc-for list="{{ creditRows }}" as="c" hint-placeholder-count="5">
+            <div class="credit-row"><span>{{ c.label }}</span><span>{{ c.author }} · {{ c.license }}</span></div>
+          </sc-for>
+        </details>
+
+        <div class="pager no-print">
+          <button class="pager-btn" onclick="{{ goLastDay }}"><span class="pager-sub">→ חזרה ללוז</span>{{ lastDayLabel }}</button>
+        </div>
+      </section>
+    </sc-if>
   </main>
 
-  <footer style="text-align:center; padding:30px; color:#a1906c; font-size:13px; border-top:1px solid #e6ddc9;">קדימה, איזה כיף! · טיול משפחתי בצפון איטליה, ספטמבר–אוקטובר 2026 ✈️</footer>
+  <footer class="footer">קדימה, איזה כיף! · טיול משפחתי בצפון איטליה, ספטמבר–אוקטובר 2026 ✈️</footer>
 </div>
 
 </x-dc>
@@ -330,9 +456,9 @@ const RAW_DAYS = [
     mapQuery: 'Saint-Vincent, Aosta Valley, Italy', lat: 45.7520, lon: 7.6420,
     route: [[32.0114,34.8867],[45.6306,8.7231],[45.7520,7.6420]],
     photos: [
-      { label: 'שדה התעופה מילאנו מלפנסה', file: 'Terminal 1, Milan Malpensa Airport, May 2022 (02).jpg' },
-      { label: 'הרחוב הראשי ב-Saint-Vincent', file: 'Saint-Vincent - Hauptstraße.jpg' },
-      { label: 'Saint-Vincent והרי האלפים', file: 'Panorama Saint-Vincent e Châtillon.JPG' },
+      { label: 'שדה התעופה מילאנו מלפנסה', file: 'malpensa-terminal.jpg' },
+      { label: 'הרחוב הראשי ב-Saint-Vincent', file: 'saint-vincent-street.jpg' },
+      { label: 'Saint-Vincent והרי האלפים', file: 'saint-vincent-panorama.jpg' },
     ],
     sidePhotos: [],
     blocks: [
@@ -349,24 +475,25 @@ const RAW_DAYS = [
     id: 'd2', date: '27.9', dateShort: "א' 27.9", weekday: 'יום ראשון', icon: '💧', shortTitle: 'Cogne + Aosta', title: 'Cogne, מפלי Lillaz ו-Aosta', location: 'Cogne · Aosta',
     blurb: 'פארק Gran Paradiso, מפלים בתוך היער, צהריים בכפר ההררי ואחר צהריים בעיר הרומית העתיקה.',
     highlight: 'מפלי Lillaz + העיר העתיקה Aosta', dinner: 'באזור המלון',
+    planB: "מקצרים את הביקור בפארק ועוברים מוקדם ל-Aosta. שם יש אתרים רומיים ובתי קפה, וקל לעבור ביניהם בהליכה קצרה.",
     notes: [], noteShort: '',
     weatherIcon: '⛅', weatherTemp: '6°–17°',
     mapQuery: 'Cogne, Aosta Valley, Italy', lat: 45.6086, lon: 7.3567,
     route: [[45.7520,7.6420],[45.6086,7.3567],[45.5942,7.3972],[45.7373,7.3204],[45.7520,7.6420]],
     photos: [
-      { label: 'מפלי Lillaz', file: 'Cascate di Lillaz.jpg' },
-      { label: 'פסגות Gran Paradiso', file: 'Bergtocht van Gimillan (1805m.) naar Colle Tsa Sètse in Cogne Valley (Italië). Zicht op de omringende alpentoppen van Gran Paradiso 01.jpg' },
-      { label: 'קשת אוגוסטוס ב-Aosta', file: 'Arch of Augustus in Aosta (3).jpg' },
+      { label: 'מפלי Lillaz', file: 'lillaz-falls.jpg' },
+      { label: 'פסגות Gran Paradiso', file: 'gran-paradiso.jpg' },
+      { label: 'קשת אוגוסטוס ב-Aosta', file: 'aosta-arch.jpg' },
     ],
     sidePhotos: [
-      { label: 'הקתדרלה של Aosta', file: 'Aosta Cattedrale.JPG' },
+      { label: 'הקתדרלה של Aosta', file: 'aosta-cathedral.jpg' },
     ],
     blocks: [
       { time: '08:00', icon: '🥐', title: 'ארוחת בוקר במלון', kind: 'default' },
       { time: '09:30', icon: '🚗', title: 'נסיעה ל-Cogne ולפארק Gran Paradiso', duration: 'כ-50 דקות', desc: 'עולים אל הפארק הלאומי הוותיק ביותר באיטליה, בין פסגות מושלגות ויערות אלפיניים', kind: 'travel', place: 'Cogne, Italy' },
       { time: null, icon: '💦', title: 'מפלי Lillaz', desc: 'מפלים בתוך היער, עם שבילים קצרים ונוחים לכל המשפחה.', kind: 'highlight', place: 'Cascate di Lillaz, Cogne' },
       { time: '12:00', icon: '🍽️', title: 'ארוחת צהריים ב-Cogne', desc: 'כפר הררי קטן עם מסעדות מקומיות ומטבח אאוסטני חם', kind: 'highlight', place: 'Restaurants in Cogne, Italy' },
-      { time: '14:00', icon: '🏛️', title: 'סיבוב בעיר העתיקה של Aosta', desc: 'קפה וגלידה בעיר הרומית שבלב האלפים, עם שער Porta Praetoria, קשת אוגוסטוס ורחובות אבן. ואולי גם גינה ליובלי.', kind: 'default', place: 'Aosta Old Town, Italy' },
+      { time: '14:00', icon: '🏛️', title: 'סיבוב בעיר העתיקה של Aosta', desc: 'קפה וגלידה בעיר הרומית שבלב האלפים, עם שער Porta Praetoria, קשת אוגוסטוס ורחובות אבן. ואולי גם גינה ליובלי.', kids: true, kind: 'default', place: 'Aosta Old Town, Italy' },
       { time: '17:00', icon: '🚗', title: 'חזרה לכיוון Saint-Vincent', desc: 'מתארגנים במלון לקראת ארוחת הערב', kind: 'travel', place: 'Parc Hotel Billia, Saint-Vincent' },
       { time: null, icon: '🍽️', title: 'ארוחת ערב', desc: 'באזור המלון', kind: 'highlight', place: 'Restaurants in Saint-Vincent, Italy' },
       { time: '21:00', icon: '🎰', title: 'יובלי ישנה והגברים יוצאים להחזיר הפסדים בקזינו', kind: 'highlight', place: 'Casino de la Vallée, Saint-Vincent' },
@@ -376,26 +503,27 @@ const RAW_DAYS = [
     id: 'd3', date: '28.9', dateShort: "ב' 28.9", weekday: 'יום שני', icon: '🏔️', shortTitle: 'Lac Bleu', title: 'Lac Bleu, Cervinia והמטרהורן', location: 'Valtournenche · Breuil-Cervinia',
     blurb: 'אגם טורקיז, נוף להר המטרהורן והרבה אוויר הרים. וכשיש כוח, עוד אגם ועוד גינה.',
     highlight: 'טיול סביב Lac Bleu + תצפית על המטרהורן', dinner: 'ארוחת ערב',
+    planB: "בגשם או בעננים אין נוף למטרהורן. מקצרים את הטיול סביב Lac Bleu, אוכלים ב-Breuil-Cervinia ויורדים מוקדם אל האגמים הנמוכים או אל המלון.",
     notes: [], noteShort: '',
     weatherIcon: '🌤️', weatherTemp: '3°–13°',
     mapQuery: 'Lac Bleu, Valtournenche, Italy', lat: 45.9227, lon: 7.6183,
     route: [[45.7520,7.6420],[45.9227,7.6183],[45.9356,7.6304],[45.8601,7.6103],[45.7580,7.7522],[45.7520,7.6420]],
     photos: [
-      { label: 'Lac Bleu', file: 'Lago Blu (Lac Bleu).JPG' },
-      { label: 'המטרהורן מ-Breuil-Cervinia', file: 'Matterhorn Breuil-Cervinia-2.jpg' },
-      { label: 'אגם Maen', file: 'Lago di Maen 2134.jpg' },
+      { label: 'Lac Bleu', file: 'lac-bleu.jpg' },
+      { label: 'המטרהורן מ-Breuil-Cervinia', file: 'matterhorn-cervinia.jpg' },
+      { label: 'אגם Maen', file: 'lago-maen.jpg' },
     ],
     sidePhotos: [
-      { label: 'Brusson', file: 'Brusson, AO, Italy.jpg' },
+      { label: 'Brusson', file: 'brusson.jpg' },
     ],
     blocks: [
       { time: '08:00', icon: '🥐', title: 'ארוחת בוקר במלון', kind: 'default' },
       { time: '09:30', icon: '🚗', title: 'נסיעה ל-Lac Bleu', duration: 'כ-40 דקות', desc: 'עולים אל הגובה, שם קר יותר. כדאי שיהיו בגדים חמים בהישג יד', kind: 'travel', place: 'Lac Bleu, Valtournenche' },
       { time: null, icon: '🥾', title: 'טיול סביב האגם', desc: 'אגם טורקיז קטן מתחת להר המטרהורן, עם שביל הליכה קצר וקליל.', kind: 'highlight', place: 'Lac Bleu, Valtournenche' },
       { time: '12:00', icon: '🍽️', title: 'ארוחת צהריים ב-Breuil-Cervinia + תצפית על המטרהורן', desc: 'עיירת סקי מתחת להר המטרהורן, עם מסעדות ונוף פתוח אל הפסגה המפורסמת', kind: 'highlight', place: 'Breuil-Cervinia, Italy' },
-      { time: '14:00', icon: '🚗', title: 'נסיעה לאגם Maen + גינת שעשועים', desc: 'עוצרים לנשום ליד האגם, וליובלי יש גינה', kind: 'travel', place: 'Lago di Maen, Valtournenche' },
+      { time: '14:00', icon: '🚗', title: 'נסיעה לאגם Maen + גינת שעשועים', desc: 'עוצרים לנשום ליד האגם, וליובלי יש גינה', kids: true, kind: 'travel', place: 'Lago di Maen, Valtournenche' },
       { time: '16:00', icon: '🧳', title: 'אם עייפים: חוזרים למלון', kind: 'default', place: 'Parc Hotel Billia, Saint-Vincent' },
-      { time: '16:00', icon: '💪', title: 'אם יש כוח: ממשיכים לעיירה ולאגם Brusson', desc: 'וגם שם יש גינה כמובן', kind: 'default', place: 'Brusson, Italy' },
+      { time: '16:00', icon: '💪', title: 'אם יש כוח: ממשיכים לעיירה ולאגם Brusson', desc: 'וגם שם יש גינה כמובן', kids: true, kind: 'default', place: 'Brusson, Italy' },
       { time: '19:00', icon: '🍽️', title: 'ארוחת ערב', kind: 'highlight', place: 'Restaurants in Saint-Vincent, Italy' },
       { time: '21:00', icon: '🎰', title: 'יובלי ישנה והנשים יוצאות לנסות את מזלן', desc: 'אחרי שהגברים הפסידו הכל', kind: 'highlight', place: 'Casino de la Vallée, Saint-Vincent' },
     ]
@@ -404,17 +532,18 @@ const RAW_DAYS = [
     id: 'd4', date: '29.9', dateShort: "ג' 29.9", weekday: 'יום שלישי', icon: '🏘️', shortTitle: 'Fontainemore', title: 'Fontainemore, המלון החדש ו-Varallo', location: 'Fontainemore · Varallo',
     blurb: 'צ׳ק-אאוט, מפל וכפר אלפיני בדרך, מעבר לפיימונטה והיכרות עם העיירה Varallo.',
     highlight: 'מפל Cascata del Fer + Fontainemore', dinner: 'במסעדה של המלון',
+    planB: "בגשם מדלגים על הנקיק Gouffre de Guillemore, כי הוא עלול להיות חלקלק. נשארים ב-Fontainemore לקפה וממשיכים ישר אל המלון החדש.",
     notes: [], noteShort: '',
     weatherIcon: '⛅', weatherTemp: '9°–19°',
     mapQuery: 'Fontainemore, Aosta Valley, Italy', lat: 45.6415, lon: 7.8901,
     route: [[45.7520,7.6420],[45.6415,7.8901],[45.7019,8.2493],[45.8146,8.2542],[45.7019,8.2493]],
     photos: [
-      { label: 'הכפר Fontainemore', file: 'Fontainemore veduta.jpg' },
-      { label: 'Fontainemore והנחל', file: 'FontainemoreAugust192023 01.jpg' },
-      { label: 'העיירה Varallo Sesia', file: 'Varallo Sesia.jpg' },
+      { label: 'הכפר Fontainemore', file: 'fontainemore-view.jpg' },
+      { label: 'Fontainemore והנחל', file: 'fontainemore-river.jpg' },
+      { label: 'העיירה Varallo Sesia', file: 'varallo.jpg' },
     ],
     sidePhotos: [
-      { label: 'Sacro Monte di Varallo', file: 'Sacro Monte (Varallo Sesia) 20.jpg' },
+      { label: 'Sacro Monte di Varallo', file: 'varallo-sacro-monte.jpg' },
     ],
     blocks: [
       { time: '08:00', icon: '🥐', title: "ארוחת בוקר + צ'ק-אאוט", desc: 'נפרדים מ-Parc Hotel Billia', kind: 'default', place: 'Parc Hotel Billia, Saint-Vincent' },
@@ -432,17 +561,18 @@ const RAW_DAYS = [
     id: 'd5', date: '30.9', dateShort: "ד' 30.9", weekday: 'יום רביעי', icon: '⛵', shortTitle: 'Orta', title: 'Orta San Giulio ו-Sacro Monte', location: 'Orta San Giulio',
     blurb: 'עיירה קסומה על שפת אגם Orta, שיט לאי הקטן ועלייה אל הגבעה הקדושה.',
     highlight: 'שיט לאי San Giulio + Sacro Monte', dinner: 'במלון או ב-Borgosesia',
+    planB: "בגשם או בסערה השיט לאי עלול להתבטל. נשארים בסמטאות ובחנויות של Orta, אוכלים צהריים בפנים ומדלגים על העלייה ל-Sacro Monte.",
     notes: [], noteShort: '',
     weatherIcon: '☀️', weatherTemp: '12°–21°',
     mapQuery: 'Orta San Giulio, Italy', lat: 45.7981, lon: 8.4070,
     route: [[45.7019,8.2493],[45.7981,8.4070],[45.7968,8.4106],[45.7128,8.2798],[45.7019,8.2493]],
     photos: [
-      { label: 'Orta San Giulio מלמעלה', file: 'OrtaSanGiulioAug132024 03.jpg' },
-      { label: 'האי San Giulio', file: 'W - orta san giulio - isola san giulio.jpg' },
-      { label: 'Sacro Monte di Orta', file: 'Sacro Monte di Orta cap.15.JPG' },
+      { label: 'Orta San Giulio מלמעלה', file: 'orta-aerial.jpg' },
+      { label: 'האי San Giulio', file: 'orta-island.jpg' },
+      { label: 'Sacro Monte di Orta', file: 'orta-sacro-monte.jpg' },
     ],
     sidePhotos: [
-      { label: 'Borgosesia', file: 'Panorama di Borgosesia.jpg' },
+      { label: 'Borgosesia', file: 'borgosesia.jpg' },
     ],
     blocks: [
       { time: '08:00', icon: '🥐', title: 'ארוחת בוקר במלון', kind: 'default' },
@@ -459,22 +589,23 @@ const RAW_DAYS = [
     id: 'd6', date: '1.10', dateShort: "ה' 1.10", weekday: 'יום חמישי', icon: '🚠', shortTitle: 'Stresa', title: 'Stresa והר Mottarone', location: 'Stresa · Mottarone',
     blurb: 'טיילת על אגם Maggiore, אולי שיט לגן הבוטני ובסוף עלייה לפסגה עם נוף לכל הכיוונים.',
     highlight: 'Stresa + תצפית מ-Mottarone', dinner: 'ארוחת ערב אחרונה',
+    planB: "בגשם או בעננים אין טעם לעלות ל-Mottarone, כי אין תצפית, ושיט לגן הבוטני פחות נעים. נשארים בטיילת ובבתי הקפה של Stresa וחוזרים מוקדם למלון.",
     notes: [], noteShort: '',
     weatherIcon: '🌤️', weatherTemp: '9°–20°',
     mapQuery: 'Stresa, Italy', lat: 45.8837, lon: 8.5390,
     route: [[45.7019,8.2493],[45.8837,8.5390],[45.9116,8.5383],[45.8815,8.4539],[45.7019,8.2493]],
     photos: [
-      { label: 'טיילת Stresa', file: 'Stresa Lungolago 2.JPG' },
-      { label: 'האי Isola Bella', file: 'Isola Bella 2024.jpg' },
-      { label: 'אגם Maggiore מ-Isola Madre', file: 'View of the lake Maggiore from Isola Madre.jpg' },
+      { label: 'טיילת Stresa', file: 'stresa-promenade.jpg' },
+      { label: 'האי Isola Bella', file: 'isola-bella.jpg' },
+      { label: 'אגם Maggiore מ-Isola Madre', file: 'isola-madre-view.jpg' },
     ],
     sidePhotos: [
-      { label: 'פסגת Mottarone', file: 'MottaroneFeb202026 01.jpg' },
+      { label: 'פסגת Mottarone', file: 'mottarone.jpg' },
     ],
     blocks: [
       { time: '08:00', icon: '🥐', title: 'ארוחת בוקר במלון', kind: 'default' },
       { time: '10:00', icon: '🚗', title: 'נסיעה ל-Stresa', duration: 'כשעה', desc: 'העיירה על גדות אגם Maggiore', kind: 'travel', place: 'Stresa, Italy' },
-      { time: null, icon: '🚶', title: 'הליכה בטיילת, קפה ומזכרות', desc: 'טיילת מרהיבה לאורך האגם, עם בתי מלון ישנים, חנויות קטנות וגינה ליובלי', kind: 'default', place: 'Stresa Lungolago, Italy' },
+      { time: null, icon: '🚶', title: 'הליכה בטיילת, קפה ומזכרות', desc: 'טיילת מרהיבה לאורך האגם, עם בתי מלון ישנים, חנויות קטנות וגינה ליובלי', kids: true, kind: 'default', place: 'Stresa Lungolago, Italy' },
       { time: '12:00', icon: '⛵', title: 'אם יש מזג אוויר יפה: שיט קצר לאי עם הגן הבוטני', desc: 'Isola Madre: אי שכולו גן בוטני עם פסלי צמחים, טווסים ופרחים', kind: 'highlight', place: 'Isola Madre, Stresa' },
       { time: '13:00', icon: '🍽️', title: 'ארוחת צהריים ב-Stresa', kind: 'highlight', place: 'Restaurants in Stresa, Italy' },
       { time: '15:00', icon: '🚠', title: 'עלייה לפסגת Mottarone', duration: 'כ-40 דקות', desc: 'עולים מעל האגם אל אחד ממקומות התצפית היפים באזור', kind: 'travel', place: 'Mottarone, Stresa' },
@@ -492,7 +623,7 @@ const RAW_DAYS = [
     mapQuery: 'Milan Malpensa Airport, Italy', lat: 45.6306, lon: 8.7231,
     route: [[45.7019,8.2493],[45.6306,8.7231]],
     photos: [
-      { label: 'שדה התעופה מילאנו מלפנסה', file: 'Check-in area at Malpensa Airport, morning.jpg' },
+      { label: 'שדה התעופה מילאנו מלפנסה', file: 'malpensa-checkin.jpg' },
     ],
     sidePhotos: [],
     blocks: [
@@ -504,17 +635,113 @@ const RAW_DAYS = [
   },
 ];
 
-const PHOTO_RESOURCE_MAP = {};
-const HERO_RESOURCE_ID = 'heroImg';
-const TILE_RESOURCE_MAP = {};
+const TRIP_YEAR = 2026;
+const TRIP_TZ = 'Europe/Rome';
+
+// קרדיט לתמונות (Wikimedia Commons): שם קובץ ← [צלם, רישיון]
+const PHOTO_CREDITS = {
+  'malpensa-terminal.jpg': ['Ardfern', 'CC BY-SA 4.0'],
+  'saint-vincent-street.jpg': ['Wolfgang Sauber', 'CC BY-SA 3.0'],
+  'saint-vincent-panorama.jpg': ['Patafisik', 'CC BY-SA 3.0'],
+  'lillaz-falls.jpg': ['Andrea Daddi', 'CC BY-SA 4.0'],
+  'gran-paradiso.jpg': ['Dominicus Johannes Bergsma', 'CC BY-SA 4.0'],
+  'aosta-arch.jpg': ['Krzysztof Golik', 'CC BY-SA 4.0'],
+  'aosta-cathedral.jpg': ['Laurom', 'CC BY-SA 3.0'],
+  'lac-bleu.jpg': ['SteGrifo27', 'CC BY-SA 3.0'],
+  'matterhorn-cervinia.jpg': ['Rufus46', 'CC BY-SA 3.0'],
+  'lago-maen.jpg': ['JeremyPession', 'CC BY-SA 4.0'],
+  'brusson.jpg': ['Ypetrachenko', 'CC BY-SA 3.0'],
+  'fontainemore-view.jpg': ['Alessandro Vecchi', 'CC BY-SA 3.0'],
+  'fontainemore-river.jpg': ['Hagai Agmon-Snir', 'CC BY-SA 4.0'],
+  'varallo.jpg': ['Kogo', 'CC BY-SA 3.0'],
+  'varallo-sacro-monte.jpg': ["Carlo Dell'Orto", 'CC BY-SA 4.0'],
+  'orta-aerial.jpg': ['Hagai Agmon-Snir', 'CC BY-SA 4.0'],
+  'orta-island.jpg': ['Ottantafame', 'CC BY-SA 4.0'],
+  'orta-sacro-monte.jpg': ['Stefano Bistolfi', 'Public domain'],
+  'borgosesia.jpg': ['Bergo Roberto', 'Public domain'],
+  'stresa-promenade.jpg': ['Torsade de Pointes', 'CC0'],
+  'isola-bella.jpg': ['Tiia Monto', 'CC BY 4.0'],
+  'isola-madre-view.jpg': ['PiRGoif', 'CC BY-SA 4.0'],
+  'mottarone.jpg': ['Hagai Agmon-Snir', 'CC BY-SA 4.0'],
+  'malpensa-checkin.jpg': ['Daniel Case', 'CC BY-SA 3.0'],
+};
+
+// דף "מידע חשוב". כל פרט שעוד לא התקבל מסומן pending ומופיע כ"יעודכן".
+const INFO_SECTIONS = [
+  { icon: '🏨', title: 'Parc Hotel Billia · Saint-Vincent', items: [
+    { label: 'תאריכים', value: '26.9 עד 29.9 · 3 לילות' },
+    { label: 'מיקום', value: 'פתח במפות', href: mapsLink('Parc Hotel Billia, Saint-Vincent') },
+    { label: 'טלפון', value: 'יעודכן', pending: true },
+    { label: 'מספר הזמנה', value: 'יעודכן', pending: true },
+  ] },
+  { icon: '🏨', title: 'La Burla · Borgosesia', items: [
+    { label: 'תאריכים', value: '29.9 עד 2.10 · 3 לילות' },
+    { label: 'מיקום', value: 'פתח במפות', href: mapsLink('Hotel La Burla, Borgosesia, Italy') },
+    { label: 'טלפון', value: 'יעודכן', pending: true },
+    { label: 'מספר הזמנה', value: 'יעודכן', pending: true },
+  ] },
+  { icon: '✈️', title: 'טיסות', items: [
+    { label: 'הלוך · 26.9', value: 'Wizz Air, נחיתה 14:00' },
+    { label: 'מספר טיסה והזמנה', value: 'יעודכן', pending: true },
+    { label: 'חזור · 2.10', value: 'המראה 13:00' },
+    { label: 'מספר טיסה והזמנה', value: 'יעודכן', pending: true },
+  ] },
+  { icon: '🚗', title: 'רכבים שכורים', items: [
+    { label: 'איסוף', value: '26.9 · שדה התעופה Malpensa' },
+    { label: 'החזרה', value: '2.10 · שדה התעופה Malpensa' },
+    { label: 'חברת השכרה', value: 'יעודכן', pending: true },
+    { label: 'מספרי הזמנה', value: 'יעודכן', pending: true },
+  ] },
+  { icon: '🛡️', title: 'ביטוח נסיעות', items: [
+    { label: 'חברה', value: 'יעודכן', pending: true },
+    { label: 'מספר פוליסה', value: 'יעודכן', pending: true },
+    { label: 'טלפון חירום של הביטוח', value: 'יעודכן', pending: true },
+  ] },
+  { icon: '🚨', title: 'טלפונים לשעת חירום באיטליה', items: [
+    { label: 'חירום כללי (כל המדינות באירופה)', value: '112', href: 'tel:112' },
+    { label: 'אמבולנס', value: '118', href: 'tel:118' },
+    { label: 'משטרה', value: '113', href: 'tel:113' },
+    { label: 'כיבוי אש', value: '115', href: 'tel:115' },
+  ] },
+];
+
+const WEATHER_ICONS = [
+  [[0], '☀️'], [[1, 2], '🌤️'], [[3], '☁️'], [[45, 48], '🌫️'],
+  [[51, 53, 55, 56, 57], '🌦️'], [[61, 63, 65, 66, 67], '🌧️'], [[71, 73, 75, 77, 85, 86], '🌨️'],
+  [[80, 81, 82], '🌦️'], [[95, 96, 99], '⛈️'],
+];
+function weatherIconFor(code) {
+  const hit = WEATHER_ICONS.find(([codes]) => codes.includes(code));
+  return hit ? hit[1] : '⛅';
+}
 
 function mapsLink(q) { return 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(q); }
-function wikiImg(file) {
-  const url = WIKI_DIRECT_URL[file] || ('https://commons.wikimedia.org/wiki/Special:FilePath/' + encodeURIComponent(file) + '?width=500');
-  const id = PHOTO_RESOURCE_MAP[file];
-  return (window.__resources && id && window.__resources[id]) || url;
+function wazeLink(q) { return 'https://waze.com/ul?q=' + encodeURIComponent(q) + '&navigate=yes'; }
+function photoSrc(file) { return 'assets/photos/' + file; }
+function readStore(key, fallback) {
+  try { const v = localStorage.getItem(key); return v ? JSON.parse(v) : fallback; } catch (e) { return fallback; }
 }
-const WIKI_DIRECT_URL = {};
+function writeStore(key, val) {
+  try { localStorage.setItem(key, JSON.stringify(val)); } catch (e) { /* אין אחסון: ממשיכים בלי לשמור */ }
+}
+function isoOf(d) {
+  const p = d.date.split('.');
+  return TRIP_YEAR + '-' + p[1].padStart(2, '0') + '-' + p[0].padStart(2, '0');
+}
+function todayInTripZone() {
+  try { return new Intl.DateTimeFormat('en-CA', { timeZone: TRIP_TZ }).format(new Date()); } catch (e) { return ''; }
+}
+RAW_DAYS.forEach(d => { d.iso = isoOf(d); });
+
+// בזמן הטיול נפתח היום הנוכחי. לפני הטיול נפתח הטאב שנבחר בפעם הקודמת.
+function initialSelected() {
+  const today = todayInTripZone();
+  const idx = RAW_DAYS.findIndex(d => d.iso === today);
+  if (idx >= 0) return idx;
+  const saved = readStore('trip-tab', 0);
+  if (saved === 'info') return 'info';
+  return (Number.isInteger(saved) && saved >= 0 && saved < RAW_DAYS.length) ? saved : 0;
+}
 
 function lonLatToFrac(lat, lon, z) {
   const n = Math.pow(2, z);
@@ -544,12 +771,16 @@ function buildRouteMap(route) {
   if (!chosen) chosen = { z: 3, txMin: 3, tyMin: 3, cols: 1, rows: 1 };
 
   const { z, txMin, tyMin, cols, rows } = chosen;
+  // אריחי המפה יושבים באתר עצמו (assets/tiles) כדי שיעבדו גם בלי קליטה.
+  // אם אריח חסר, הדפדפן עובר לשרת של OpenStreetMap (ראו data-remote).
   const tiles = [];
   for (let ry = 0; ry < rows; ry++) {
     for (let rx = 0; rx < cols; rx++) {
-      const tileUrl = 'https://tile.openstreetmap.org/' + z + '/' + (txMin + rx) + '/' + (tyMin + ry) + '.png';
-      const tileId = TILE_RESOURCE_MAP[tileUrl];
-      tiles.push({ src: (window.__resources && tileId && window.__resources[tileId]) || tileUrl });
+      const x = txMin + rx, y = tyMin + ry;
+      tiles.push({
+        src: 'assets/tiles/' + z + '_' + x + '_' + y + '.png',
+        remote: 'https://tile.openstreetmap.org/' + z + '/' + x + '/' + y + '.png',
+      });
     }
   }
   function project(lat, lon) {
@@ -572,24 +803,80 @@ function buildRouteMap(route) {
   };
 }
 
-const PHOTO_STYLES = [
-  { bg: '#d7e3da', stripe: '#c3d3c8' },
-  { bg: '#e3ddc9', stripe: '#d3caa9' },
-  { bg: '#dce3ea', stripe: '#c7d3de' },
-];
-
 class Component extends DCLogic {
-  state = { selected: 0, now: Date.now() };
+  state = { selected: initialSelected(), now: Date.now(), weather: readStore('trip-weather', {}), offlineReady: false };
 
   componentDidMount() {
     this._t = setInterval(() => this.setState({ now: Date.now() }), 1000);
+    this._weather = { ...this.state.weather };
+    this.fetchWeather();
+    this.checkOffline();
+    this.afterSelect(true);
   }
   componentWillUnmount() {
     clearInterval(this._t);
   }
 
+  // תחזית אמיתית מ-Open-Meteo (חינמי, בלי מפתח). זמינה עד 16 יום קדימה.
+  // אם אין רשת או שהתאריך רחוק מדי, נשארת התחזית המשוערת או האחרונה ששמרנו.
+  fetchWeather() {
+    RAW_DAYS.forEach(d => {
+      const url = 'https://api.open-meteo.com/v1/forecast?latitude=' + d.lat + '&longitude=' + d.lon +
+        '&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max' +
+        '&timezone=' + encodeURIComponent(TRIP_TZ) + '&start_date=' + d.iso + '&end_date=' + d.iso;
+      fetch(url).then(r => (r.ok ? r.json() : null)).then(j => {
+        const dl = j && j.daily;
+        if (!dl || !dl.time || !dl.time.length || dl.temperature_2m_max[0] == null) return;
+        this._weather[d.iso] = {
+          code: dl.weather_code[0],
+          max: Math.round(dl.temperature_2m_max[0]),
+          min: Math.round(dl.temperature_2m_min[0]),
+          rain: dl.precipitation_probability_max[0],
+          at: Date.now(),
+        };
+        writeStore('trip-weather', this._weather);
+        this.setState({ weather: { ...this._weather } });
+      }).catch(() => {});
+    });
+  }
+
+  // האם האתר נשמר במכשיר לשימוש בלי קליטה (sw.js מסמן את זה בסיום ההורדה)
+  checkOffline() {
+    if (!('serviceWorker' in navigator) || !window.caches) return;
+    navigator.serviceWorker.ready
+      .then(() => caches.match('__ready'))
+      .then(r => this.setState({ offlineReady: !!r }))
+      .catch(() => {});
+    setTimeout(() => {
+      caches.match('__ready').then(r => { if (r && !this.state.offlineReady) this.setState({ offlineReady: true }); }).catch(() => {});
+    }, 8000);
+  }
+
+  go(target) {
+    this.setState({ selected: target });
+    writeStore('trip-tab', target);
+    this.afterSelect(false);
+  }
+
+  // אחרי מעבר יום: חוזרים לראש הלוז וממרכזים את הלשונית הפעילה
+  afterSelect(initial) {
+    setTimeout(() => {
+      const nav = document.getElementById('tabs');
+      const panel = document.getElementById('panel-top');
+      if (!initial && nav && panel) {
+        const top = panel.getBoundingClientRect().top + window.scrollY - nav.offsetHeight - 8;
+        if (window.scrollY > top) window.scrollTo({ top, behavior: 'smooth' });
+      }
+      const act = document.querySelector('.tab[data-active="true"]');
+      if (act && act.scrollIntoView) act.scrollIntoView({ inline: 'center', block: 'nearest', behavior: initial ? 'auto' : 'smooth' });
+    }, 80);
+  }
+
   renderVals() {
     const selected = this.state.selected;
+    const isInfo = selected === 'info';
+    const last = RAW_DAYS.length - 1;
+    const today = todayInTripZone();
     const target = new Date('2026-09-26T11:00:00+03:00').getTime();
     let diff = Math.max(0, target - this.state.now);
     const s = Math.floor(diff / 1000);
@@ -605,48 +892,90 @@ class Component extends DCLogic {
       const blocks = d.blocks.map(b => ({
         ...b,
         isTravel: b.kind === 'travel',
-        isHighlight: b.kind === 'highlight',
-        isDefault: b.kind !== 'travel' && b.kind !== 'highlight',
         hasPlace: !!b.place,
-        noPlace: !b.place,
         mapHref: b.place ? mapsLink(b.place) : null,
-        dotStyle: 'width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;background:' + (b.kind === 'highlight' ? '#f3d3ae' : b.kind === 'travel' ? '#c9dccf' : '#efe8d6') + ';',
-        lineStyle: 'flex:1;width:2px;background:#e6ddc9;min-height:14px;',
+        // חיפוש כללי ("מסעדות ב...") לא מתאים לניווט ב-Waze
+        hasWaze: !!b.place && !/^Restaurants in /.test(b.place),
+        wazeHref: b.place ? wazeLink(b.place) : null,
+        dotClass: 'dot' + (b.kind === 'highlight' ? ' dot-highlight' : b.kind === 'travel' ? ' dot-travel' : ''),
+        cardClass: 'card ' + (b.kind === 'highlight' ? 'card-highlight' : b.kind === 'travel' ? 'card-travel' : 'card-default'),
       }));
+
+      const w = this.state.weather[d.iso];
+      let weatherNote = 'תחזית משוערת · סתיו';
+      if (w) {
+        const stale = Date.now() - w.at > 12 * 3600 * 1000;
+        weatherNote = stale
+          ? 'תחזית שמורה מ-' + new Date(w.at).toLocaleDateString('he-IL', { day: 'numeric', month: 'numeric' })
+          : 'תחזית עדכנית' + (w.rain >= 30 ? ' · גשם ' + w.rain + '%' : '');
+      }
 
       return {
         ...d,
         isActive,
-        select: () => this.setState({ selected: i }),
-        tabStyle: 'border:none; border-radius:14px; padding:12px 14px; cursor:pointer; text-align:center; flex:1 1 100px; min-width:90px; font-family:Heebo,sans-serif; transition:background 0.15s; ' +
-          (isActive ? 'background:#2c5347;color:#f6f1e6;' : 'background:#efe8d6;color:#4d4636;'),
+        select: () => this.go(i),
+        tabClass: 'tab' + (isActive ? ' is-active' : ''),
+        activeAttr: isActive ? 'true' : 'false',
+        todayLabel: d.iso === today ? 'היום' : '',
+        kicker: d.weekday + ' · ' + d.date + ' · יום ' + (i + 1) + ' מתוך ' + RAW_DAYS.length,
+        weatherIcon: w ? weatherIconFor(w.code) : d.weatherIcon,
+        weatherTemp: w ? w.min + '°–' + w.max + '°' : d.weatherTemp,
+        weatherNote,
         hasNotes: d.notes.length > 0,
         notes: d.notes.map(t => ({ text: t })),
+        hasPlanB: !!d.planB,
         mapLink: mapsLink(d.mapQuery),
         ...buildRouteMap(d.route),
-        photos: [...d.photos, ...(d.sidePhotos || [])].map((p, idx) => {
-          const st = PHOTO_STYLES[idx % PHOTO_STYLES.length];
-          return {
-            label: p.label,
-            src: wikiImg(p.file),
-            wrapStyle: 'position:relative; flex:1; min-height:0; border-radius:14px; overflow:hidden; background:repeating-linear-gradient(45deg,' + st.bg + ',' + st.bg + ' 12px,' + st.stripe + ' 12px,' + st.stripe + ' 24px);',
-            imgStyle: 'position:absolute; inset:0; width:100%; height:100%; object-fit:cover;',
-            captionStyle: 'position:absolute; right:8px; bottom:6px; background:rgba(43,38,32,0.55); color:#f6f1e6; font-size:11.5px; padding:3px 9px; border-radius:8px; font-family:Heebo,sans-serif;',
-          };
-        }),
+        photos: [...d.photos, ...(d.sidePhotos || [])].map(p => ({ label: p.label, src: photoSrc(p.file) })),
         blocks,
+        hasPrev: i > 0,
+        prevLabel: i > 0 ? RAW_DAYS[i - 1].shortTitle : '',
+        goPrev: () => this.go(i - 1),
+        nextSub: i < last ? 'היום הבא' : 'עוד',
+        nextLabel: i < last ? RAW_DAYS[i + 1].shortTitle : 'מידע חשוב',
+        goNext: () => this.go(i < last ? i + 1 : 'info'),
       };
     });
+
+    const seen = new Set();
+    const creditRows = [];
+    RAW_DAYS.forEach(d => [...d.photos, ...(d.sidePhotos || [])].forEach(p => {
+      if (seen.has(p.file)) return;
+      seen.add(p.file);
+      const c = PHOTO_CREDITS[p.file] || ['', ''];
+      creditRows.push({ label: p.label, author: c[0], license: c[1] });
+    }));
+    creditRows.push({ label: 'תמונת הפתיחה (Lac Bleu והמטרהורן)', author: 'Soniatortora', license: 'CC BY-SA 3.0' });
+
+    const infoSections = INFO_SECTIONS.map(sec => ({
+      ...sec,
+      items: sec.items.map((it, idx) => ({
+        ...it,
+        hasHref: !!it.href,
+        noHref: !it.href,
+        rowClass: 'info-row' + (idx === 0 ? ' info-row-first' : ''),
+        valueClass: 'info-value' + (it.pending ? ' info-pending' : ''),
+      })),
+    }));
 
     return {
       countdownParts,
       days,
+      isInfo,
+      infoSections,
+      creditRows,
+      infoTabClass: 'tab' + (isInfo ? ' is-active' : ''),
+      infoActiveAttr: isInfo ? 'true' : 'false',
+      selectInfo: () => this.go('info'),
+      goLastDay: () => this.go(last),
+      lastDayLabel: RAW_DAYS[last].shortTitle,
+      offlineText: this.state.offlineReady ? 'נשמר בטלפון ✓' : 'עוד לא נשמר. פתחו שוב עם אינטרנט',
+      offlineClass: this.state.offlineReady ? 'status-ok' : 'status-wait',
       printPage: () => window.print(),
-      heroBgStyle: 'position:absolute; inset:0; background:linear-gradient(135deg, rgba(25,45,38,0.82) 0%, rgba(30,60,58,0.72) 45%, rgba(28,50,64,0.8) 100%), url(\'' + ((window.__resources && window.__resources[HERO_RESOURCE_ID]) || 'https://commons.wikimedia.org/wiki/Special:FilePath/Cervino%20e%20Lago%20Blu.JPG?width=1600') + '\') center 60% / cover no-repeat;',
+      heroBgStyle: 'position:absolute; inset:0; background:linear-gradient(135deg, rgba(25,45,38,0.82) 0%, rgba(30,60,58,0.72) 45%, rgba(28,50,64,0.8) 100%), url(\'assets/photos/hero.jpg\') center 18% / cover no-repeat;',
     };
   }
 }
-
 </script>
 
 

@@ -17,6 +17,8 @@ $mime = @{
   ".jpg"  = "image/jpeg"
   ".jpeg" = "image/jpeg"
   ".svg"  = "image/svg+xml"
+  ".woff2" = "font/woff2"
+  ".webmanifest" = "application/manifest+json"
 }
 
 while ($listener.IsListening) {
