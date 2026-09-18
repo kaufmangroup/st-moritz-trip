@@ -245,12 +245,14 @@ if ('serviceWorker' in navigator) {
             <div class="flight-row"><span class="fl-label">שעת המראה:</span><span class="fl-value">יעודכן</span></div>
             <div class="flight-row"><span class="fl-label">שעת נחיתה:</span><span class="fl-value">14:00</span></div>
             <div class="flight-row"><span class="fl-label">חברת תעופה:</span><span class="fl-value">Wizz Air</span></div>
+            <div class="flight-row"><span class="fl-label">מספר טיסה:</span><span class="fl-value">WMT6406</span></div>
           </div>
           <div class="flights-divider"></div>
           <div class="flight">
             <div class="flight-title">🛬 חזור · מילאנו → תל אביב</div>
             <div class="flight-row"><span class="fl-label">שעת המראה:</span><span class="fl-value">13:00</span></div>
             <div class="flight-row"><span class="fl-label">שעת נחיתה:</span><span class="fl-value">יעודכן</span></div>
+            <div class="flight-row"><span class="fl-label">חברת תעופה:</span><span class="fl-value">יעודכן</span></div>
             <div class="flight-row"><span class="fl-label">מספר טיסה:</span><span class="fl-value">יעודכן</span></div>
           </div>
         </div>
@@ -410,6 +412,7 @@ if ('serviceWorker' in navigator) {
                   <sc-if value="{{ it.noHref }}" hint-placeholder-val="{{ true }}"><span class="{{ it.valueClass }}">{{ it.value }}</span></sc-if>
                 </div>
               </sc-for>
+              <sc-if value="{{ sec.note }}" hint-placeholder-val="{{ false }}"><p class="info-text">{{ sec.note }}</p></sc-if>
             </div>
           </sc-for>
 
@@ -463,8 +466,9 @@ const RAW_DAYS = [
     sidePhotos: [],
     blocks: [
       { time: '11:00', icon: '🛃', title: 'הגעה לנתב"ג', kind: 'default', place: 'Ben Gurion Airport' },
-      { time: null, icon: '✈️', title: 'טיסת Wizz Air למילאנו', desc: 'פרטי הטיסה יתעדכנו', kind: 'flight' },
-      { time: '14:00', icon: '🛬', title: 'נחיתה במילאנו והשכרת הרכבים', desc: 'איסוף הרכבים בשדה התעופה מילאנו-מלפנסה', kind: 'default', place: 'Milan Malpensa Airport (MXP)' },
+      { time: null, icon: '✈️', title: 'טיסת Wizz Air למילאנו', desc: 'מספר טיסה WMT6406. שעת ההמראה תתעדכן', kind: 'flight' },
+      { time: '14:00', icon: '🛬', title: 'נחיתה במילאנו', desc: 'איסוף המזוודות ומעבר לאיסוף הרכב', kind: 'default', place: 'Milan Malpensa Airport (MXP)' },
+      { time: '14:30', icon: '🚗', title: 'איסוף הרכב מ-OK Mobility', desc: 'בטרמינל 1, אחרי איסוף המזוודות, יורדים במעלית 5 או 9 (בין אזורי ההגעה A ו-B) לקומה -1, "השכרת רכב ותחנת רכבת". שם עוברים בדלתות האוטומטיות אל אולם ההשכרות השני, והמשרד של OK Mobility מימין. להביא: שובר, רישיון נהיגה, דרכון וכרטיס אשראי על שם הנהג הראשי.', kind: 'highlight', place: 'OK Mobility, Milan Malpensa Airport Terminal 1' },
       { time: null, icon: '🚗', title: 'נסיעה ל-Saint-Vincent', duration: 'כשעה וחצי', desc: 'נסיעה אל העיירה שבה נשהה בשלושת הלילות הראשונים, בלב עמק אאוסטה', kind: 'travel', place: 'Parc Hotel Billia, Saint-Vincent' },
       { time: '17:00', icon: '🏨', title: 'קבלת חדרים ב-Parc Hotel Billia והתארגנות', desc: 'מתמקמים בחדרים ומתארגנים לקראת ארוחת הערב', kind: 'default', place: 'Parc Hotel Billia, Saint-Vincent' },
       { time: null, icon: '🍽️', title: 'ארוחת ערב', desc: 'באזור המלון', kind: 'highlight', place: 'Restaurants in Saint-Vincent, Italy' },
@@ -629,7 +633,7 @@ const RAW_DAYS = [
     blocks: [
       { time: '08:00', icon: '🥐', title: "ארוחת בוקר + צ'ק-אאוט", kind: 'default', place: 'Hotel La Burla, Borgosesia, Italy' },
       { time: '09:00', icon: '🚗', title: 'נסיעה לשדה התעופה מילאנו מלפנסה', duration: 'כשעה', kind: 'travel', place: 'Milan Malpensa Airport (MXP)' },
-      { time: null, icon: '🚗', title: 'החזרת הרכבים השכורים', kind: 'default', place: 'Milan Malpensa Airport (MXP)' },
+      { time: '10:30', icon: '🚗', title: 'החזרת הרכב ל-OK Mobility', desc: 'בשדה התעופה מלפנסה, לפי שעת ההחזרה בהזמנה', kind: 'default', place: 'OK Mobility, Milan Malpensa Airport Terminal 1' },
       { time: '13:00', icon: '✈️', title: 'טיסה חזרה הביתה', desc: 'המראה 13:00 · פרטי הטיסה יתעדכנו', kind: 'highlight' },
     ]
   },
@@ -682,16 +686,19 @@ const INFO_SECTIONS = [
   ] },
   { icon: '✈️', title: 'טיסות', items: [
     { label: 'הלוך · 26.9', value: 'Wizz Air, נחיתה 14:00' },
-    { label: 'מספר טיסה והזמנה', value: 'יעודכן', pending: true },
+    { label: 'מספר טיסה', value: 'WMT6406' },
     { label: 'חזור · 2.10', value: 'המראה 13:00' },
-    { label: 'מספר טיסה והזמנה', value: 'יעודכן', pending: true },
+    { label: 'מספר טיסה', value: 'יעודכן', pending: true },
   ] },
-  { icon: '🚗', title: 'רכבים שכורים', items: [
-    { label: 'איסוף', value: '26.9 · שדה התעופה Malpensa' },
-    { label: 'החזרה', value: '2.10 · שדה התעופה Malpensa' },
-    { label: 'חברת השכרה', value: 'יעודכן', pending: true },
-    { label: 'מספרי הזמנה', value: 'יעודכן', pending: true },
-  ] },
+  { icon: '🚗', title: 'רכב שכור · OK Mobility', items: [
+    { label: 'רכב', value: 'Audi A3 Sportback או דומה' },
+    { label: 'איסוף', value: 'שבת 26.9 · 14:30' },
+    { label: 'מקום האיסוף', value: 'Malpensa, טרמינל 1', href: mapsLink('OK Mobility, Milan Malpensa Airport Terminal 1') },
+    { label: 'החזרה', value: 'שישי 2.10 · 10:30' },
+    { label: 'הזמנה ב-Booking.com', value: '724927547' },
+    { label: 'מספר הזמנה בחברה', value: '390653262388' },
+    { label: 'ביטוח', value: 'RentalCover Full Protection' },
+  ], note: 'בעת האיסוף מציגים: השובר, רישיון נהיגה של כל נהג, דרכון או תעודת זהות וכרטיס אשראי על שם הנהג הראשי.' },
   { icon: '🛡️', title: 'ביטוח נסיעות', items: [
     { label: 'חברה', value: 'יעודכן', pending: true },
     { label: 'מספר פוליסה', value: 'יעודכן', pending: true },
