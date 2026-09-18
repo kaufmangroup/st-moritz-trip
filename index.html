@@ -17,15 +17,8 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png">
 <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+<link rel="stylesheet" href="assets/vendor/leaflet/leaflet.css">
 <script>
-// אריח מפה שלא נמצא באתר: עוברים לשרת של OpenStreetMap
-document.addEventListener('error', function (e) {
-  var t = e.target;
-  if (t && t.tagName === 'IMG' && t.dataset && t.dataset.remote && t.dataset.remote.indexOf('http') === 0 && !t.dataset.retried) {
-    t.dataset.retried = '1';
-    t.src = t.dataset.remote;
-  }
-}, true);
 // שמירת האתר לשימוש בלי קליטה
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function () {
@@ -33,6 +26,8 @@ if ('serviceWorker' in navigator) {
   });
 }
 </script>
+<script src="assets/vendor/leaflet/leaflet.js"></script>
+<script src="assets/js/routes.js"></script>
 <script src="assets/js/dc-runtime.js"></script>
 </head>
 <body>
@@ -137,10 +132,29 @@ if ('serviceWorker' in navigator) {
     .photo figcaption { position: absolute; right: 8px; bottom: 6px; max-width: calc(100% - 16px); background: rgba(43,38,32,0.62); color: #f6f1e6; font-size: 12px; padding: 3px 10px; border-radius: 8px; }
 
     .map-box { flex: 1 1 100%; background: #eef3ee; border-radius: 16px; overflow: hidden; border: 1px solid #d7e3da; }
-    .map-link { display: block; position: relative; width: 100%; overflow: hidden; }
-    .map-grid { position: absolute; inset: 0; display: grid; }
-    .map-grid img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .map-svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .map-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 10px 16px; background: #fffdf8; font-size: 14px; font-weight: 600; color: #2c5347; }
+    .map-hint { display: none; font-size: 12px; font-weight: 500; color: #8f7f5c; }
+    .map-box.touch .map-hint { display: inline; }
+    .map-canvas { position: relative; z-index: 0; isolation: isolate; width: 100%; height: 400px; background: #e8e4d8; }
+    .map-canvas .leaflet-container, .map-canvas.leaflet-container { font-family: inherit; }
+    .map-canvas .leaflet-bar a { width: 44px; height: 44px; line-height: 44px; font-size: 22px; }
+    .map-canvas .leaflet-control-attribution { font-size: 11px; }
+    .mk-wrap { background: none; border: none; }
+    .mk { width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #ffffff; font: 700 14px 'Heebo', sans-serif; border: 2px solid #ffffff; box-shadow: 0 1px 5px rgba(0,0,0,0.45); }
+    .mk-stop { background: #2c5347; }
+    .mk-boat { background: #e8a23d; color: #2b2620; border-style: dashed; }
+    .mk-hotel { background: #7a3d1f; font-size: 15px; }
+    .mk-airport { background: #3a4f7a; font-size: 14px; }
+    .mp { font-family: 'Heebo', sans-serif; font-size: 14px; line-height: 1.4; text-align: right; }
+    .mp-links { display: flex; gap: 14px; margin-top: 6px; }
+    .mp-links a { color: #2c5347; font-weight: 700; padding: 8px 0; }
+    .map-legend { list-style: none; margin: 0; padding: 12px 16px; display: flex; flex-wrap: wrap; gap: 8px 16px; background: #fffdf8; font-size: 13.5px; color: #4d4636; border-top: 1px solid #eee3cd; }
+    .map-legend li { display: flex; align-items: center; gap: 6px; }
+    .lg-num { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%; color: #ffffff; font-size: 12px; font-weight: 700; flex-shrink: 0; }
+    .lg-stop { background: #2c5347; }
+    .lg-boat { background: #e8a23d; color: #2b2620; }
+    .lg-hotel { background: #7a3d1f; }
+    .lg-airport { background: #3a4f7a; }
     .map-open { display: flex; align-items: center; justify-content: center; min-height: 48px; font-size: 14px; color: #2c5347; text-decoration: none; font-weight: 600; background: #fffdf8; }
 
     .pager { display: flex; gap: 12px; margin-top: 28px; }
@@ -207,6 +221,7 @@ if ('serviceWorker' in navigator) {
       .actions { flex-wrap: nowrap; }
       .actions .pill { flex: 1 1 0; min-width: 0; padding: 0 10px; font-size: 13.5px; white-space: normal; text-align: center; line-height: 1.2; }
       .map-box { flex: none; }
+      .map-canvas { height: 320px; }
       .info-row { align-items: flex-start; }
     }
 
@@ -359,22 +374,14 @@ if ('serviceWorker' in navigator) {
 
             <!-- MAP -->
             <div class="map-box">
-              <a class="map-link" href="{{ d.mapLink }}" target="_blank" rel="noopener" dir="ltr" style="aspect-ratio:{{ d.mapAspect }};">
-                <div class="map-grid" style="grid-template-columns:repeat({{ d.mapCols }}, 1fr); grid-template-rows:repeat({{ d.mapRows }}, 1fr);">
-                  <sc-for list="{{ d.mapTiles }}" as="tile" hint-placeholder-count="4">
-                    <img src="{{ tile.src }}" data-remote="{{ tile.remote }}" alt="">
-                  </sc-for>
-                </div>
-                <svg class="map-svg" sc-camel-view-box="{{ d.mapViewBox }}" sc-camel-preserve-aspect-ratio="none">
-                  <polyline points="{{ d.routePoints }}" fill="none" stroke="#2c5347" stroke-width="{{ d.routeStrokeWidth }}" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"></polyline>
-                  <sc-for list="{{ d.stops }}" as="stop" hint-placeholder-count="0">
-                    <circle cx="{{ stop.x }}" cy="{{ stop.y }}" r="{{ stop.r }}" fill="#e8a23d" stroke="#ffffff" stroke-width="2"></circle>
-                  </sc-for>
-                  <circle cx="{{ d.startX }}" cy="{{ d.startY }}" r="{{ d.markerR }}" fill="#2c8a5b" stroke="#ffffff" stroke-width="2"></circle>
-                  <circle cx="{{ d.endX }}" cy="{{ d.endY }}" r="{{ d.markerR }}" fill="#c0392b" stroke="#ffffff" stroke-width="2"></circle>
-                </svg>
-              </a>
-              <a class="map-open" href="{{ d.mapLink }}" target="_blank" rel="noopener">פתח מסלול בגוגל מפות ↗</a>
+              <div class="map-head"><span>🗺️ מסלול הנסיעה של היום</span><span class="map-hint">הזזה והגדלה: שתי אצבעות</span></div>
+              <div class="map-canvas" id="day-map" dir="ltr" data-day="{{ d.id }}"></div>
+              <ul class="map-legend">
+                <sc-for list="{{ d.mapStops }}" as="s" hint-placeholder-count="4">
+                  <li><span class="{{ s.cls }}">{{ s.label }}</span><span>{{ s.name }}</span></li>
+                </sc-for>
+              </ul>
+              <a class="map-open" href="{{ d.routeLink }}" target="_blank" rel="noopener">פתח את המסלול בגוגל מפות ↗</a>
             </div>
           </div>
 
@@ -426,7 +433,7 @@ if ('serviceWorker' in navigator) {
 
         <details class="credits">
           <summary>קרדיט לתמונות ולמפות</summary>
-          <div class="credit-note">התמונות מ-Wikimedia Commons ברישיונות פתוחים. המפות © תורמי OpenStreetMap. התחזית מ-Open-Meteo.com.</div>
+          <div class="credit-note">התמונות מ-Wikimedia Commons ברישיונות פתוחים. המפות והמסלולים מבוססים על OpenStreetMap © תורמי OpenStreetMap (בעזרת Leaflet ו-OSRM). התחזית מ-Open-Meteo.com.</div>
           <sc-for list="{{ creditRows }}" as="c" hint-placeholder-count="5">
             <div class="credit-row"><span>{{ c.label }}</span><span>{{ c.author }} · {{ c.license }}</span></div>
           </sc-for>
@@ -445,6 +452,11 @@ if ('serviceWorker' in navigator) {
 </x-dc>
 <script type="text/x-dc" data-dc-script="">
 
+// נקודות קבועות במפות. הקואורדינטות הן קירוב, והקישורים ל-Google Maps ול-Waze מחפשים לפי שם.
+const HOTEL_SV = { name: 'Parc Hotel Billia', kind: 'hotel', ll: [45.7524, 7.6409], q: 'Parc Hotel Billia, Saint-Vincent' };
+const HOTEL_BU = { name: 'מלון La Burla', kind: 'hotel', ll: [45.6972, 8.2597], q: 'Hotel La Burla, Borgosesia, Italy' };
+const AIRPORT = { name: 'שדה התעופה Malpensa', kind: 'airport', ll: [45.6306, 8.7231], q: 'Milan Malpensa Airport (MXP)' };
+
 const RAW_DAYS = [
   {
     id: 'd1', date: '26.9', dateShort: "ש' 26.9", weekday: 'שבת', icon: '🛬', shortTitle: 'הגעה', title: 'הגעה לצפון איטליה', location: 'Saint-Vincent',
@@ -457,7 +469,7 @@ const RAW_DAYS = [
     ], noteShort: 'מה להביא',
     weatherIcon: '☀️', weatherTemp: '11°–21°',
     mapQuery: 'Saint-Vincent, Aosta Valley, Italy', lat: 45.7520, lon: 7.6420,
-    route: [[32.0114,34.8867],[45.6306,8.7231],[45.7520,7.6420]],
+    stops: [AIRPORT, HOTEL_SV],
     photos: [
       { label: 'שדה התעופה מילאנו מלפנסה', file: 'malpensa-terminal.jpg' },
       { label: 'הרחוב הראשי ב-Saint-Vincent', file: 'saint-vincent-street.jpg' },
@@ -483,7 +495,7 @@ const RAW_DAYS = [
     notes: [], noteShort: '',
     weatherIcon: '⛅', weatherTemp: '6°–17°',
     mapQuery: 'Cogne, Aosta Valley, Italy', lat: 45.6086, lon: 7.3567,
-    route: [[45.7520,7.6420],[45.6086,7.3567],[45.5942,7.3972],[45.7373,7.3204],[45.7520,7.6420]],
+    stops: [HOTEL_SV, { name: 'Cogne', ll: [45.6083, 7.3556], q: 'Cogne, Italy' }, { name: 'מפלי Lillaz', ll: [45.5942, 7.3972], q: 'Cascate di Lillaz, Cogne' }, { name: 'Aosta', ll: [45.7367, 7.3212], q: 'Aosta Old Town, Italy' }, HOTEL_SV],
     photos: [
       { label: 'מפלי Lillaz', file: 'lillaz-falls.jpg' },
       { label: 'פסגות Gran Paradiso', file: 'gran-paradiso.jpg' },
@@ -511,7 +523,7 @@ const RAW_DAYS = [
     notes: [], noteShort: '',
     weatherIcon: '🌤️', weatherTemp: '3°–13°',
     mapQuery: 'Lac Bleu, Valtournenche, Italy', lat: 45.9227, lon: 7.6183,
-    route: [[45.7520,7.6420],[45.9227,7.6183],[45.9356,7.6304],[45.8601,7.6103],[45.7580,7.7522],[45.7520,7.6420]],
+    stops: [HOTEL_SV, { name: 'Lac Bleu', ll: [45.9227, 7.6183], q: 'Lac Bleu, Valtournenche' }, { name: 'Breuil-Cervinia', ll: [45.9356, 7.6304], q: 'Breuil-Cervinia, Italy' }, { name: 'אגם Maen', ll: [45.8601, 7.6103], q: 'Lago di Maen, Valtournenche' }, { name: 'Brusson (אם יש כוח)', ll: [45.7580, 7.7522], q: 'Brusson, Italy' }, HOTEL_SV],
     photos: [
       { label: 'Lac Bleu', file: 'lac-bleu.jpg' },
       { label: 'המטרהורן מ-Breuil-Cervinia', file: 'matterhorn-cervinia.jpg' },
@@ -540,7 +552,7 @@ const RAW_DAYS = [
     notes: [], noteShort: '',
     weatherIcon: '⛅', weatherTemp: '9°–19°',
     mapQuery: 'Fontainemore, Aosta Valley, Italy', lat: 45.6415, lon: 7.8901,
-    route: [[45.7520,7.6420],[45.6415,7.8901],[45.7019,8.2493],[45.8146,8.2542],[45.7019,8.2493]],
+    stops: [HOTEL_SV, { name: 'Fontainemore ומפל Cascata del Fer', ll: [45.6500, 7.8667], q: 'Fontainemore, Italy' }, { name: 'נקיק Gouffre de Guillemore (אופציה)', ll: [45.6682, 7.8585], q: 'Gouffre de Guillemore, Fontainemore' }, HOTEL_BU, { name: 'Varallo', ll: [45.8146, 8.2542], q: 'Varallo Sesia, Italy' }, HOTEL_BU],
     photos: [
       { label: 'הכפר Fontainemore', file: 'fontainemore-view.jpg' },
       { label: 'Fontainemore והנחל', file: 'fontainemore-river.jpg' },
@@ -569,7 +581,7 @@ const RAW_DAYS = [
     notes: [], noteShort: '',
     weatherIcon: '☀️', weatherTemp: '12°–21°',
     mapQuery: 'Orta San Giulio, Italy', lat: 45.7981, lon: 8.4070,
-    route: [[45.7019,8.2493],[45.7981,8.4070],[45.7968,8.4106],[45.7128,8.2798],[45.7019,8.2493]],
+    stops: [HOTEL_BU, { name: 'Orta San Giulio', ll: [45.7981, 8.4070], q: 'Orta San Giulio, Italy' }, { name: 'האי San Giulio (בסירה)', ll: [45.7964, 8.3999], q: "Isola San Giulio, Lago d'Orta", via: false }, { name: 'Sacro Monte di Orta', ll: [45.7968, 8.4106], q: 'Sacro Monte di Orta' }, { name: 'Wonder Bar al Parco', ll: [45.7128, 8.2798], q: 'Wonder Bar al Parco, Parco Magni, Borgosesia' }, HOTEL_BU],
     photos: [
       { label: 'Orta San Giulio מלמעלה', file: 'orta-aerial.jpg' },
       { label: 'האי San Giulio', file: 'orta-island.jpg' },
@@ -597,7 +609,7 @@ const RAW_DAYS = [
     notes: [], noteShort: '',
     weatherIcon: '🌤️', weatherTemp: '9°–20°',
     mapQuery: 'Stresa, Italy', lat: 45.8837, lon: 8.5390,
-    route: [[45.7019,8.2493],[45.8837,8.5390],[45.9116,8.5383],[45.8815,8.4539],[45.7019,8.2493]],
+    stops: [HOTEL_BU, { name: 'Stresa', ll: [45.8837, 8.5390], q: 'Stresa, Italy' }, { name: 'Isola Madre (בסירה)', ll: [45.9116, 8.5383], q: 'Isola Madre, Stresa', via: false }, { name: 'פסגת Mottarone', ll: [45.8815, 8.4539], q: 'Mottarone, Stresa' }, HOTEL_BU],
     photos: [
       { label: 'טיילת Stresa', file: 'stresa-promenade.jpg' },
       { label: 'האי Isola Bella', file: 'isola-bella.jpg' },
@@ -625,7 +637,7 @@ const RAW_DAYS = [
     notes: ['לפני שיוצאים מהמלון: דרכונים, מטענים וטלפונים 🛂'], noteShort: 'בדיקה אחרונה',
     weatherIcon: '☀️', weatherTemp: '11°–20°',
     mapQuery: 'Milan Malpensa Airport, Italy', lat: 45.6306, lon: 8.7231,
-    route: [[45.7019,8.2493],[45.6306,8.7231]],
+    stops: [HOTEL_BU, AIRPORT],
     photos: [
       { label: 'שדה התעופה מילאנו מלפנסה', file: 'malpensa-checkin.jpg' },
     ],
@@ -750,78 +762,140 @@ function initialSelected() {
   return (Number.isInteger(saved) && saved >= 0 && saved < RAW_DAYS.length) ? saved : 0;
 }
 
-function lonLatToFrac(lat, lon, z) {
-  const n = Math.pow(2, z);
-  const x = (lon + 180) / 360 * n;
-  const latRad = lat * Math.PI / 180;
-  const y = (1 - Math.log(Math.tan(latRad) + 1 / Math.cos(latRad)) / Math.PI) / 2 * n;
-  return { x, y };
-}
+// ---------- מפות ----------
+// המסלולים (assets/js/routes.js) הם קווי כבישים אמיתיים שחושבו מראש. אריחי המפה של תצוגת הפתיחה
+// נשמרים באתר (assets/tiles), כך שהמפה נפתחת גם בלי קליטה. מה שמחוץ לתצוגה נטען מ-OpenStreetMap.
+const LOCAL_TILES = new Set(window.TRIP_LOCAL_TILES || []);
 
-function buildRouteMap(route) {
-  const lats = route.map(p => p[0]), lons = route.map(p => p[1]);
-  let latMin = Math.min(...lats), latMax = Math.max(...lats);
-  let lonMin = Math.min(...lons), lonMax = Math.max(...lons);
-  const latPad = Math.max(latMax - latMin, 0.006) * 0.35;
-  const lonPad = Math.max(lonMax - lonMin, 0.006) * 0.35;
-  latMin -= latPad; latMax += latPad; lonMin -= lonPad; lonMax += lonPad;
-
-  let chosen = null;
-  for (let z = 14; z >= 2; z--) {
-    const fA = lonLatToFrac(latMin, lonMin, z), fB = lonLatToFrac(latMax, lonMax, z);
-    const xs = [fA.x, fB.x], ys = [fA.y, fB.y];
-    const txMin = Math.floor(Math.min(...xs)), txMax = Math.floor(Math.max(...xs));
-    const tyMin = Math.floor(Math.min(...ys)), tyMax = Math.floor(Math.max(...ys));
-    const cols = txMax - txMin + 1, rows = tyMax - tyMin + 1;
-    if (cols <= 3 && rows <= 3) { chosen = { z, txMin, tyMin, cols, rows }; break; }
-  }
-  if (!chosen) chosen = { z: 3, txMin: 3, tyMin: 3, cols: 1, rows: 1 };
-
-  const { z, txMin, tyMin, cols, rows } = chosen;
-  // אריחי המפה יושבים באתר עצמו (assets/tiles) כדי שיעבדו גם בלי קליטה.
-  // אם אריח חסר, הדפדפן עובר לשרת של OpenStreetMap (ראו data-remote).
-  const tiles = [];
-  for (let ry = 0; ry < rows; ry++) {
-    for (let rx = 0; rx < cols; rx++) {
-      const x = txMin + rx, y = tyMin + ry;
-      tiles.push({
-        src: 'assets/tiles/' + z + '_' + x + '_' + y + '.png',
-        remote: 'https://tile.openstreetmap.org/' + z + '/' + x + '/' + y + '.png',
-      });
+function decodePolyline(str) {
+  const pts = [];
+  let i = 0, lat = 0, lon = 0;
+  while (i < str.length) {
+    for (let k = 0; k < 2; k++) {
+      let shift = 0, result = 0, b;
+      do { b = str.charCodeAt(i++) - 63; result |= (b & 31) << shift; shift += 5; } while (b >= 32);
+      const delta = (result & 1) ? ~(result >> 1) : (result >> 1);
+      if (k === 0) lat += delta; else lon += delta;
     }
+    pts.push([lat / 1e5, lon / 1e5]);
   }
-  function project(lat, lon) {
-    const f = lonLatToFrac(lat, lon, z);
-    return { x: (f.x - txMin) * 256, y: (f.y - tyMin) * 256 };
-  }
-  const pts = route.map(p => project(p[0], p[1]));
-  const start = pts[0], end = pts[pts.length - 1];
-  const markerR = Math.max(6, cols * 2.2);
-  const stops = pts.slice(1, -1).map(p => ({ x: p.x, y: p.y, r: markerR * 0.7 }));
-  return {
-    mapCols: cols, mapRows: rows, mapAspect: cols + ' / ' + rows,
-    mapTiles: tiles,
-    mapViewBox: '0 0 ' + (cols * 256) + ' ' + (rows * 256),
-    routePoints: pts.map(p => p.x.toFixed(1) + ',' + p.y.toFixed(1)).join(' '),
-    startX: start.x, startY: start.y, endX: end.x, endY: end.y,
-    stops,
-    routeStrokeWidth: Math.max(3, cols * 1.3),
-    markerR,
-  };
+  return pts;
 }
+
+function coordText(ll) { return ll[0] + ',' + ll[1]; }
+
+// קישור למסלול הנסיעה של היום בגוגל מפות, עם כל העצירות ברכב
+function dayRouteLink(d) {
+  const drive = d.stops.filter(s => s.via !== false);
+  const mid = drive.slice(1, -1).map(s => coordText(s.ll));
+  let url = 'https://www.google.com/maps/dir/?api=1&travelmode=driving' +
+    '&origin=' + coordText(drive[0].ll) + '&destination=' + coordText(drive[drive.length - 1].ll);
+  if (mid.length) url += '&waypoints=' + encodeURIComponent(mid.join('|'));
+  return url;
+}
+
+// רשימת הנקודות של היום: מספרים לעצירות, סימנים למלון ולשדה
+function dayMapStops(d) {
+  const list = [];
+  const seen = new Set();
+  let n = 0;
+  d.stops.forEach(s => {
+    const key = coordText(s.ll);
+    if (seen.has(key)) return;
+    seen.add(key);
+    let label, kind;
+    if (s.kind === 'hotel') { label = '🏨'; kind = 'hotel'; }
+    else if (s.kind === 'airport') { label = '✈️'; kind = 'airport'; }
+    else { n += 1; label = String(n); kind = s.via === false ? 'boat' : 'stop'; }
+    list.push({ ...s, label, cls: 'lg-num lg-' + kind, mk: 'mk mk-' + kind });
+  });
+  return list;
+}
+
+function makeTileLayer() {
+  const Layer = L.TileLayer.extend({
+    getTileUrl: function (c) {
+      const key = c.z + '_' + c.x + '_' + c.y;
+      return LOCAL_TILES.has(key)
+        ? 'assets/tiles/' + key + '.png'
+        : 'https://tile.openstreetmap.org/' + c.z + '/' + c.x + '/' + c.y + '.png';
+    },
+  });
+  return new Layer('', { minZoom: 5, maxZoom: 18, keepBuffer: 1, attribution: '© תורמי OpenStreetMap' });
+}
+
+function popupHtml(s) {
+  const gm = mapsLink(s.q || coordText(s.ll));
+  const wz = 'https://waze.com/ul?ll=' + coordText(s.ll) + '&navigate=yes';
+  return '<div dir="rtl" class="mp"><strong>' + s.name + '</strong><div class="mp-links">' +
+    '<a href="' + gm + '" target="_blank" rel="noopener">פתח במפות</a>' +
+    '<a href="' + wz + '" target="_blank" rel="noopener">Waze</a></div></div>';
+}
+
+// מפה אינטראקטיבית ליום אחד. בנייד גוללים את המפה בשתי אצבעות, כדי שגלילת הדף באצבע אחת לא תיתקע.
+function initDayMap(dayId) {
+  const el = document.getElementById('day-map');
+  if (!el || !window.L) return;
+  if (el._tripMap && el._tripDay === dayId) return;
+  if (el._tripMap) { el._tripMap.remove(); el._tripMap = null; }
+  const d = RAW_DAYS.find(x => x.id === dayId);
+  const route = window.TRIP_ROUTES && window.TRIP_ROUTES[dayId];
+  if (!d || !route) return;
+  const touch = !!L.Browser.mobile;
+  const map = L.map(el, {
+    center: route.c,
+    zoom: el.clientWidth > 700 ? route.zd : route.zm,
+    minZoom: 5, maxZoom: 18, zoomSnap: 1,
+    dragging: !touch, tap: false, scrollWheelZoom: false,
+  });
+  map.attributionControl.setPrefix(false);
+  makeTileLayer().addTo(map);
+  const pts = decodePolyline(route.line);
+  L.polyline(pts, { color: '#ffffff', weight: 8, opacity: 0.85, lineCap: 'round', lineJoin: 'round' }).addTo(map);
+  L.polyline(pts, { color: '#2c5347', weight: 4.5, opacity: 0.95, lineCap: 'round', lineJoin: 'round' }).addTo(map);
+  dayMapStops(d).forEach(s => {
+    const icon = L.divIcon({
+      className: 'mk-wrap', html: '<div class="' + s.mk + '">' + s.label + '</div>',
+      iconSize: [30, 30], iconAnchor: [15, 15], popupAnchor: [0, -14],
+    });
+    L.marker(s.ll, { icon }).addTo(map).bindPopup(popupHtml(s));
+  });
+  el._tripMap = map;
+  el._tripDay = dayId;
+  const box = el.closest('.map-box');
+  if (box && touch) box.classList.add('touch');
+  setTimeout(() => map.invalidateSize(), 60);
+}
+
 
 class Component extends DCLogic {
   state = { selected: initialSelected(), now: Date.now(), weather: readStore('trip-weather', {}), offlineReady: false };
 
   componentDidMount() {
-    this._t = setInterval(() => this.setState({ now: Date.now() }), 1000);
+    this._t = setInterval(() => { this.setState({ now: Date.now() }); this.ensureMap(); }, 1000);
+    this._onResize = () => {
+      const el = document.getElementById('day-map');
+      if (el && el._tripMap) el._tripMap.invalidateSize();
+    };
+    window.addEventListener('resize', this._onResize);
     this._weather = { ...this.state.weather };
     this.fetchWeather();
     this.checkOffline();
     this.afterSelect(true);
+    this.scheduleMap();
   }
   componentWillUnmount() {
     clearInterval(this._t);
+    window.removeEventListener('resize', this._onResize);
+  }
+
+  // המפה נבנית מחוץ לתבנית (Leaflet), אז אחרי כל החלפת יום בודקים שהיא מוצגת ליום הנכון
+  ensureMap() {
+    const el = document.getElementById('day-map');
+    if (el && el.dataset.day) initDayMap(el.dataset.day);
+  }
+  scheduleMap() {
+    [80, 400, 1200].forEach(ms => setTimeout(() => this.ensureMap(), ms));
   }
 
   // תחזית אמיתית מ-Open-Meteo (חינמי, בלי מפתח). זמינה עד 16 יום קדימה.
@@ -863,6 +937,7 @@ class Component extends DCLogic {
     this.setState({ selected: target });
     writeStore('trip-tab', target);
     this.afterSelect(false);
+    this.scheduleMap();
   }
 
   // אחרי מעבר יום: חוזרים לראש הלוז וממרכזים את הלשונית הפעילה
@@ -931,8 +1006,8 @@ class Component extends DCLogic {
         hasNotes: d.notes.length > 0,
         notes: d.notes.map(t => ({ text: t })),
         hasPlanB: !!d.planB,
-        mapLink: mapsLink(d.mapQuery),
-        ...buildRouteMap(d.route),
+        routeLink: dayRouteLink(d),
+        mapStops: dayMapStops(d),
         photos: [...d.photos, ...(d.sidePhotos || [])].map(p => ({ label: p.label, src: photoSrc(p.file) })),
         blocks,
         hasPrev: i > 0,
