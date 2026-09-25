@@ -1,6 +1,6 @@
 // שומר את האתר בטלפון כדי שיעבוד גם בהרים, בלי קליטה.
 // אחרי שמוסיפים או מחליפים תמונות/אריחי מפה: מעדכנים את הרשימה כאן ומעלים את מספר הגרסה.
-const VERSION = 'trip-v2';
+const VERSION = 'trip-v3';
 
 const CDN = [
   'https://unpkg.com/react@18.3.1/umd/react.production.min.js',
